@@ -11,22 +11,21 @@ export class FirstPageComponent implements OnInit {
   name: string = '';
   flag1=true;
   flag2=false;
+  flag3=false;
   restItems: any;
-  restItemsUrl = 'http://demo4853762.mockable.io/viewPerformance/';
-  mobileNO = '';
-  result='';
+  restItemsUrl = 'https://en25nerdu6.execute-api.ap-south-1.amazonaws.com/ViewPerformance-Dev/';
+  mobileNO;
+  connection:boolean=false;
   textValue = 'initial value';
-  values = '';
-  imagepath="../../assets/icons/baseline-search-24px.svg";
+  values:number;
   onClickMe() {
     this.restItems=null;
-    if(this.values.length == 10){
+    if((this.values > 999999999 && this.values <= 9999999999) && ((this.values*10)%10 == 0)){
     this.flag1 = false;
     this.flag2 = true;
+    this.flag3 = false;
     this.mobileNO = this.values;
     console.log(this.mobileNO);
-    this.result= this.restItemsUrl.concat(this.mobileNO);
-    console.log(this.result);
     this.getRestItems();
   }
   
@@ -37,24 +36,15 @@ export class FirstPageComponent implements OnInit {
   }
 }
 
-//  myFunction() {
-//  this.imagepath="../../assets/icons/download.png";
-// }
-// myFunction1() {
-//  this. imagepath="../../assets/icons/baseline-search-24px.svg";
-// }
-
 refresh(): void {
   this.flag1 = true;
     this.flag2 = false;
-    this.values = '';
+    this.values=0;
     
 }
   constructor(private http: HttpClient) { }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {  }
 
   getRestItems(): void {
     this.restItemsServiceGetRestItems()
@@ -62,13 +52,27 @@ refresh(): void {
         restItems => {
           this.restItems = restItems;
           console.log(this.restItems);
+          if(this.restItems.status == 'NoUser') {
+            this.flag3=true;
+            this.flag2=false;
+          }
+        },
+        error => {
+          if (error.status === 0) {
+            this.connection= true;
+          console.log("No Internet connection"); 
         }
+      }
       )
   }
 
   restItemsServiceGetRestItems() {
     return this.http
-      .get<any[]>(this.result)
+      .post(this.restItemsUrl,
+        {
+          "phoneNumber": this.mobileNO
+        }
+      )
       .pipe(map(data => data));
   }
 

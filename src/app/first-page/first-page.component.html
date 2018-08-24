@@ -3,27 +3,19 @@
         
         <div class="search-container">
           <form action="/action_page.php">
-            <input  [(ngModel)]="values" type="text" placeholder="Search.." name="search">
-             <img (click)="onClickMe()" (keyup.enter)="onClickMe()" src={{imagepath}} id="myImg">
+            <input type="number"  [(ngModel)]="values" placeholder="Search.." name="search">
+             <img (click)="onClickMe()" (keyup.enter)="onClickMe()" src="../../assets/icons/baseline-search-24px.svg" id="myImg">
           </form>
         </div> 
-</div>
-
-    <!-- <div stylne="padding-left:16px">
-            <h2>Responsive Search Bar</h2>
-            <p>Navigation bar with a search box and a submit button inside of it.</p>
-            <p>Resize the browser window to see the responsive effect.</p>
-    </div> -->
-          
-
+</div>    
 <div *ngIf="flag2">
-<div class="center" *ngIf="restItems == undefined">Loading...</div>
+<div class="center" *ngIf="restItems == undefined && !connection" class="spinner"><mat-spinner [diameter]=100></mat-spinner></div>
 
 
 <div *ngIf="restItems" class ="container">
   <ul style = "list-style-type: none;">
     <li><b>Name: {{restItems.userName}}</b></li>
-    <li><b>Class:</b></li>
+    <li><b>Class: {{restItems.standard}}</b></li>
     <li><b>School: {{restItems.school}}</b></li>
   </ul>
 </div>
@@ -49,13 +41,13 @@
             <mfDefaultSorter by="city">TOTAL SCORE</mfDefaultSorter>
         </th>
     </tr>
-    <tr  *ngFor="let item of restItems.weeklyReport; let i = index">
+    <tr  *ngFor="let item of restItems.weeklyReports; let i = index">
         <td style="width: 10%; text-align: center;">{{item.weekNumber}}</td>
         <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.pointsScored}}</mfDefaultSorter></td>
         <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.level}}</mfDefaultSorter></td>
         <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.taskScore}}</mfDefaultSorter></td>
         <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.weekScore}}</mfDefaultSorter></td>
-        <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.TotalScore}}</mfDefaultSorter></td>
+        <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.totalScore}}</mfDefaultSorter></td>
     </tr> 
     <!-- <tfoot>
         <tr>
@@ -68,7 +60,8 @@
     <div class="center" *ngIf="checker">Mobile Number Doesn't exists</div>
     <!-- <button (click)="refresh()" class="search">Check other</button> -->
 </div>
-
+<div *ngIf="flag3" class="exists">User Does not exists</div>
+<div *ngIf="connection" class="exists">Check your Internet Connection</div>
 
      
     <!-- <span *ngIf="flag1" class="searchbar">

@@ -160,10 +160,6 @@ public output:any;
     
   }
 
-
-
-
-
   Fileupload() {
     this.coloring="#274c7c";
     this.status="Uploading..."

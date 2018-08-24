@@ -8,14 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import {
-  MatToolbarModule,
-  MatButtonModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatCardModule
-} from '@angular/material';
+import { MatToolbarModule,MatButtonModule,MatSidenavModule,MatIconModule,MatListModule,MatCardModule} from '@angular/material';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
 import { ThirdPageComponent } from './third-page/third-page.component';
@@ -32,9 +25,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DataService } from '../app/data.service';
-import { JsonpModule, Jsonp, Response } from '@angular/http';
 import { ImageViewerModule } from 'ngx-image-viewer';
-import { OrderModule } from 'ngx-order-pipe';
+import { InfiniteScrollModule } from '@thisissoon/angular-infinite-scroll';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 const appRoutes: Routes = [
   {
     path: '',
@@ -42,19 +35,21 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'dashboard',
     canActivate: [AuthguardGuard],
     component: MyNavComponent
   },
   {
-    path: 'login',
+    path: 'dashboard',
     component: LoginComponent
   },
-  { path: '**', redirectTo: 'login' }
+  
+  { path: '**', redirectTo: 'login',pathMatch: 'full' }
 
-  // { path: 'first-page', component: FirstPageComponent},
-  // { path: 'second-page', component: SecondPageComponent},
-  // { path: 'third-page', component: ThirdPageComponent}
 ];
 
 @NgModule({
@@ -88,9 +83,9 @@ const appRoutes: Routes = [
     MatInputModule,
     FlexLayoutModule,
     NgxPaginationModule,
-    JsonpModule,
     ImageViewerModule.forRoot(),
-    OrderModule
+    InfiniteScrollModule,
+    MatProgressSpinnerModule,
   ],
   entryComponents: [GalleryComponent],
   providers: [

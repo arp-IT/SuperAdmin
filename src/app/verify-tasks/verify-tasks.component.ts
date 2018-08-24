@@ -5,6 +5,7 @@ import { Validators, FormControl} from '@angular/forms';
 import { MatDialog} from "@angular/material";
 import {GalleryComponent} from '../gallery/gallery.component';
 import { DataService } from "../data.service";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import date from '../../../node_modules/date-and-time';
 
 @Component({
@@ -23,6 +24,7 @@ export class VerifyTasksComponent implements OnInit {
   restItemsUrl = 'https://08jy9v77aj.execute-api.ap-south-1.amazonaws.com/Dev/fetchallrecordedactivities';
   galleryView:FormControl;
   imagesurl="https://s3.ap-south-1.amazonaws.com/qshala-task-activity-images/";
+  connection:boolean=false;
   constructor(private data: DataService,private http: HttpClient,private dialog: MatDialog) {
    }
   ngOnInit() {
@@ -35,6 +37,11 @@ export class VerifyTasksComponent implements OnInit {
         restItems => {
           this.restItems = restItems;
           console.log(this.restItems);
+        },
+        error => {
+          if (error.status === 0)
+          console.log("No Internet connection");
+          this.connection=true;
         }
       )
   }
@@ -50,6 +57,7 @@ export class VerifyTasksComponent implements OnInit {
     const dialogRef = this.dialog.open(GalleryComponent, {
       width: "90%",
       height: "100%",
+      panelClass: 'full-screen-modal',
       data: {
         galleryView: this.galleryView
       }

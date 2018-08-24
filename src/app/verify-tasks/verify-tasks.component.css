@@ -1,3 +1,7 @@
+.full-screen-modal .mat-dialog-container {
+    max-width: none;
+  }
+
 body {
     margin: 0 auto;
     max-width: 800px;
@@ -17,6 +21,12 @@ body {
     background-color: #FFF;
 }
 
+.spinner {
+    stroke: #f6b319;
+    padding-top: 15%;
+    padding-left: 45%;
+}
+
 .buttons {
     background-color: #f6b319;
     height: 27px;
@@ -28,7 +38,12 @@ body {
     float: right;
     box-shadow: 5px 5px #888888;
   }
-
+  button:disabled,
+  button[disabled]{
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
  
 
 .darker {
@@ -67,6 +82,12 @@ body {
 }
 
 .pageFooter {
-    text-align:center;
-    
+    text-align:center;  
 }
+
+.exists {
+    color:red;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 150px;
+  }

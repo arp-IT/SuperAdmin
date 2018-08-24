@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   ]);
 
   constructor(private router:Router, private user:UserService) { }
-
+ 
   ngOnInit() {
   }
 
@@ -33,8 +33,10 @@ export class LoginComponent implements OnInit {
       this.flag = true;
     }
     else
+    {
     this.flag = false;
-    
+    this.router.navigate(['login']);
+    }
   }
 
 }

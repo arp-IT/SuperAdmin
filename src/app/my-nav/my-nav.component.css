@@ -15,23 +15,35 @@
   background: #274c7c !important;
   color: #fff;
 }
-a:hover {
+/* a:hover {
   color: red;
 }
 a:active {
   color: yellow;
-}
+} */
+.logo
+{
+    height: 15%;
+    width: 100%;
+    margin-left: -16px;
+    margin-top: 7px;
+} 
 
 /* LOGOUT BUTTON CSS */
 .logout
 {
   background-color: #f6b319;
-  width: 150px;
-  height: 30px;
-  border-radius: 20px;
-  padding: 5px;
-  text-align: center;
-  text-decoration: none;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    float: right;
+    margin-left: 77%;
+    cursor: pointer;
 }
 /* .logout:hover {
   background-color: skyblue;

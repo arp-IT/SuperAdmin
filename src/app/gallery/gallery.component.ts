@@ -1,35 +1,35 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { HttpHeaders } from '@angular/common/http';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { DataService } from '../data.service';
+
+
+class score {
+  constructor(
+    public scores: string = "",
+  ) {}
+}
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
+
+
+
 export class GalleryComponent implements OnInit {
-  url =
-    'https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity';
+  url ='https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity';
   restItems: any;
   sendItems: any;
   taskId;
   userId;
-  message: string;
-  message1: string;
-  imagesurl =
-    'https://s3.ap-south-1.amazonaws.com/qshala-task-activity-images/';
-  scores = null;
+  imagesurl ='https://s3.ap-south-1.amazonaws.com/qshala-task-activity-images/';
   flag = false;
   status: string;
   coloring="#274c7c";
-
-  images = [
-    // 'https://i.ytimg.com/vi/nlYlNF30bVg/hqdefault.jpg',
-    // 'https://www.askideas.com/media/10/Funny-Goat-Closeup-Pouting-Face.jpg'
-  ];
+  connection:boolean=false;
+  images = [];
 
   imageIndexOne = 0;
   imageIndexTwo = 0;
@@ -58,7 +58,8 @@ export class GalleryComponent implements OnInit {
       prev: false
     }
   };
-
+  model: score = new score();
+  @ViewChild("f") form: any;
   constructor(
     private data: DataService,
     private http: HttpClient,
@@ -67,12 +68,10 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     console.log();
-    this.data.currentMessage.subscribe(message => (this.message = message));
-    console.log(this.message);
-    this.data.currentMessage1.subscribe(message1 => (this.message1 = message1));
-    console.log(this.message1);
-    this.taskId = this.message;
-    this.userId = this.message1;
+    this.data.currentMessage.subscribe(message => (this.taskId = message));
+    console.log(this.taskId);
+    this.data.currentMessage1.subscribe(message1 => (this.userId = message1));
+    console.log(this.userId);
     this.getRestItems();
   }
 
@@ -83,23 +82,28 @@ export class GalleryComponent implements OnInit {
       this.restItems = restItems;
       this.images[0] = this.imagesurl + restItems['submittedImgURL'];
       console.log(this.restItems);
-    });
+    },
+    error => {
+      if (error.status === 0)
+      console.log("No Internet connection");
+      this.connection=true;
+    }
+  );
   }
 
   sendRestItems():void {
+    if (this.form.valid) {
     this.status="Sending..."
-    console.log('component');
     this.senddata()
       .subscribe(
         sendItems => {
           this.sendItems = sendItems;
-          console.log(this.scores)
           console.log(this.sendItems.status);
           if(this.sendItems.status == "COMPLETED"){
             this.status="Score Sent Successfully"
             this.coloring="green";
             this.flag=true;
-           this.scores=null;
+            this.model.scores=null;
           }
           else {
             this.coloring="red";
@@ -107,23 +111,16 @@ export class GalleryComponent implements OnInit {
         }
       )
   }
+}
   getdata() {
     console.log(this.taskId);
     console.log(this.userId);
     console.log('service');
-    const formData = {
-      userID: this.message1,
-      taskID: this.message
-    };
-    // const headers: HttpHeaders = new HttpHeaders({
-    // "Content-Type": "application/json"
-    // });
-    // console.log(headers);
     return this.http.post(
       'https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity',
       {
-        userID: this.message1,
-        taskID: this.message
+        userID: this.userId,
+        taskID: this.taskId
       }
     );
   }
@@ -131,26 +128,23 @@ export class GalleryComponent implements OnInit {
   senddata()
     {
       console.log('service');
-      if(this.scores<=1000 && this.scores>=0) {
       this.status="Sending...";
+      console.log(this.model.scores)
       return this.http.post(
       'https://g4e59shy99.execute-api.ap-south-1.amazonaws.com/Dev/usertaskassessment',
       {
-        "userID":this.message1,
-        "taskID":this.message,
-        "score": this.scores,
+        "userID":this.userId,
+        "taskID":this.taskId,
+        "score": this.model.scores,
       }
       )
-    }
-    else {
-      this.coloring="red";
-      this.status="Please Enter a Valid Score";
-    }
   }
 
   onNoClick(): void {
     console.log('CLOSE');
     this.dialogRef.close();
-    // this.dialogRef.close("complete");
+  }
+  myFunction() {
+    this.status='';
   }
 }

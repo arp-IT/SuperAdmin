@@ -15,10 +15,25 @@ body {
     width:80%;
 
 }
+.exists {
+    color:red;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 30px;
+  }
+  
+.foo {
+    border: 0px solid #333;
+    height: 600px;
+    overflow: auto;
+  }
+  
 .feedbacks {
     text-align: left;
     margin-left: inherit;
     margin-right: auto;
+    max-width: inherit;
+    word-wrap: break-word;
 }
 
 .darker {
@@ -69,3 +84,18 @@ body {
     border-radius: 5px !important;
     color: #f6b319;
 }
+
+.spinner {
+    stroke: #f6b319;
+    padding-top: 15%;
+    padding-left: 45%;
+}
+
+
+/* ************************************** TEST **************************************************************  */
+
+  
+  
+
+
+  /* ************************************** TEST **************************************************************  */

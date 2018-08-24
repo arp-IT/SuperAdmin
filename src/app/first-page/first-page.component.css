@@ -17,6 +17,13 @@
     padding: 8px;
 }
 
+.exists {
+  color:red;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 30px;
+}
+
 #customers tr:nth-child(even){background-color: #f2f2f2;}
 
 #customers tr:hover {background-color: #ddd;}
@@ -29,6 +36,11 @@
     color: white;
 }
 
+.spinner {
+  stroke: #f6b319;
+  padding-top: 15%;
+  padding-left: 45%;
+}
 
 
 
@@ -50,10 +62,8 @@
 
 
   input {
-    padding: 16px 17px;
-    margin: 24px 0;
-    /* margin-left: 25%; */
-    /* margin-right: 25%; */
+    padding: 15px 17px;
+    margin: 4px 0;
     display: inline;
     border: 1px solid #274c7c;
 }
@@ -90,12 +100,12 @@
 
  img {
   float: right;
-  padding: 4px 10px;
-  margin-right: 9px;
-  background: white;
-  cursor: pointer;
-  margin-top: 8px;
-  border: 1px solid#274c7c;
+    padding: 10.4px 10px;
+    margin-right: 9px;
+    background: white;
+    cursor: pointer;
+    margin-top: 4px;
+    border: 1px solid#274c7c;
 }
 img:hover {
   background-color: #274c7c;

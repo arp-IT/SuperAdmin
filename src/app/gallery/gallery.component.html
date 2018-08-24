@@ -1,10 +1,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<div *ngIf="!restItems">Loading...</div>
+<div *ngIf="!restItems && !connection"  class="spinner"><mat-spinner [diameter]=100></mat-spinner></div>
 <div *ngIf="restItems">
 <div fxLayout="column" fxFlex="20" class="left-layout" >
     <img src="/assets/icons/baseline-account_circle-24px.svg" alt="Avatar" style="width:25%;" class="images" />
     <h3>Name: {{restItems.name}}</h3>
-    <h3>Date: {{restItems.submissionDate}}</h3>
+    <h3>Date: {{restItems.submissionDate | date:'medium' }}</h3>
     <h3>Group: {{restItems.group}}</h3>
 </div>
 <div fxLayoutGap fxFlex="60" class="center-layout">
@@ -22,7 +22,25 @@
       alt="img" style="height:30px; width:30px; float:right;" />
     </mat-icon>
     <p>Give point out of 1000  <br>
-      <input type="number" max="1000" (click)="myFunction()" (keyup.enter)="sendRestItems()" onfocus="this.value=''" [(ngModel)]="scores"/><br>
-      <button  [disabled]="!scores"  (click)="sendRestItems()" class="buttons" >OK</button></p><span [ngStyle]="{'color':coloring}">{{status}}</span>
+      <form novalidate #f="ngForm" (ngSubmit)="sendRestItems()"> 
+              <div class="form-group"
+		   [ngClass]="{
+		'has-danger': scores.invalid && (scores.dirty || scores.touched),
+		'has-success': scores.valid && (scores.dirty || scores.touched)
+	}">
+		<label></label>
+		<input type="number" class="form-control" name="scores" [(ngModel)]="model.scores" #scores="ngModel" max="1000"  pattern="^([0-9]{0,3}|1000)" required>
+    <div class="form-control-feedback" *ngIf="scores.errors && (scores.dirty || scores.touched)">
+				<!-- <p *ngIf="scores.errors.required" [ngStyle]="{'color':'red'}">Score is required</p> -->
+				<p *ngIf="scores.errors.pattern" [ngStyle]="{'color':'red'}">score value must be between 0 to 1000</p>          
+  </div>
+  </div><br>
+  <button type="submit" [disabled]="scores.errors" class="buttons">Submit</button>
+  </form><br>
+  <span [ngStyle]="{'color':coloring}">{{status}}</span>
+
+      <!-- <input type="number" max="1000" (click)="myFunction()" (keyup.enter)="sendRestItems()" onfocus="this.value=''" [(ngModel)]="scores"/><br>
+      <button  [disabled]="!scores"  (click)="sendRestItems()" class="buttons" >OK</button></p><span [ngStyle]="{'color':coloring}">{{status}}</span> -->
   </div>
 </div>
+<div *ngIf="connection" class="exists">Check your Internet Connection...</div>

@@ -4,3 +4,10 @@ body {
      margin: 0;
      font-family:Arial;
 }
+::-webkit-scrollbar {
+    display:auto;
+}
+
+::ng-deep .mat-accent .mat-input-element {
+    caret-color: #f6b319 !important;
+}

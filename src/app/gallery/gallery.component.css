@@ -9,7 +9,7 @@
 }
 .buttons {
     background-color: #f6b319;
-    width: 40px;
+    width: 100px;
     height: 32px;
     border-radius: 7px;
     border: none;
@@ -17,9 +17,25 @@
     margin-top: 4px;
     cursor: pointer;
   }
-  .buttons:hover {
-      background-color: #274c7c;
-      color:white;
+button:disabled,
+button[disabled]{
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.exists {
+    color:red;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 30px;
+  }
+
+
+  .spinner {
+    stroke: #f6b319;
+    padding-top: 15%;
+    padding-left: 45%;
   }
 
 .chip img {

@@ -17,18 +17,12 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="(isHandset | async)!.matches">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="(isHandset | async)!.matches">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      
-      <span>Qshala</span>
-      <a style="color: #fff; float:right; margin-left:78%; cursor: pointer;" routerLink="/" class="logout">Logout</a>
-    </mat-toolbar>
+      <span><img class="logo"  src="../../assets/icons/QshalaLogo.PNG" alt="success" /></span>
+      <a  routerLink="/" class="logout">Logout</a>
+  </mat-toolbar>
     <!-- <router-outlet></router-outlet> -->
    <div *ngIf="flag1"><app-first-page ></app-first-page></div>
    <div *ngIf="flag2"><app-second-page></app-second-page></div>
