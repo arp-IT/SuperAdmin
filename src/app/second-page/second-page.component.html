@@ -1,0 +1,35 @@
+<div class = "upload">
+<form>
+<mat-card>
+<h3 style="color:#274c7c">Upload Question and Question Groups</h3>
+<label >Attach Question Answers:
+  <input type="file" (change)="selectFile($event)" style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" #fileInput>
+  <button type="button" (click)="fileInput.click()" class="buttons">Pick file</button>
+</label>
+<mat-card class="fileDisplay" *ngIf="fileName" style="margin-left:0% !important; width:90% !important; margin-right:0%  !important">
+  <span>{{fileName}}</span> <span style="float:right;" [ngStyle]="{'color':coloring}">{{status}}</span>
+  </mat-card>
+<br><br> 
+<label >Attach Question Groups:
+   <input type="file" (change)="selectFile1($event)" style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" #fileInput1>
+    <button type="button" (click)="fileInput1.click()" class="buttons">Pick file</button><br>
+  </label>
+  <mat-card class="fileDisplay" *ngIf="fileName1" style="margin-left:0% !important; width:90% !important; margin-right:0%  !important">
+      <span>{{fileName1}}</span> <span style="float:right;" [ngStyle]="{'color':coloring}">{{status1}}</span>
+      </mat-card><br>
+<button  [disabled]="!selectedFiles || !selectedFiles1" (click)="Fileupload()" class="buttons" >Upload</button>
+</mat-card><br><br>
+<mat-card>
+    <h3 style="color:#274c7c">Upload Activities</h3>
+    <label >Attach Activities:
+      <input type="file" (change)="selectFile2($event)" style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" #fileInput2>
+      <button type="button" (click)="fileInput2.click()" class="buttons">Pick file</button>
+    </label>
+    <mat-card class="fileDisplay" *ngIf="fileName2" style="margin-left:0% !important; width:90% !important; margin-right:0%  !important">
+      <span>{{fileName2}}</span> <span style="float:right;" [ngStyle]="{'color':coloring}">{{status2}}</span>
+      </mat-card>
+    <br><br>
+    <button  [disabled]="!selectedfiles2"  (click)="Fileupload2()" class="buttons" >Upload</button>
+    </mat-card>
+</form>
+</div>

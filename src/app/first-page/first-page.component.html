@@ -1,0 +1,78 @@
+
+<div class="topnav">
+        
+        <div class="search-container">
+          <form action="/action_page.php">
+            <input  [(ngModel)]="values" type="text" placeholder="Search.." name="search">
+             <img (click)="onClickMe()" (keyup.enter)="onClickMe()" src={{imagepath}} id="myImg">
+          </form>
+        </div> 
+</div>
+
+    <!-- <div stylne="padding-left:16px">
+            <h2>Responsive Search Bar</h2>
+            <p>Navigation bar with a search box and a submit button inside of it.</p>
+            <p>Resize the browser window to see the responsive effect.</p>
+    </div> -->
+          
+
+<div *ngIf="flag2">
+<div class="center" *ngIf="restItems == undefined">Loading...</div>
+
+
+<div *ngIf="restItems" class ="container">
+  <ul style = "list-style-type: none;">
+    <li><b>Name: {{restItems.userName}}</b></li>
+    <li><b>Class:</b></li>
+    <li><b>School: {{restItems.school}}</b></li>
+  </ul>
+</div>
+
+<table *ngIf="restItems"  id="customers" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <tr>
+        <th style="width: 10%; text-align: center;">
+            <mfDefaultSorter by="name">WEEK</mfDefaultSorter>
+        </th>
+        <th style="width: 10%; text-align: center;">
+            <mfDefaultSorter by="email">POINT SCORED</mfDefaultSorter>
+        </th>
+        <th style="width: 10%; text-align: center;">
+            <mfDefaultSorter by="email">LEVEL</mfDefaultSorter>
+        </th>
+        <th style="width: 10%; text-align: center;">
+            <mfDefaultSorter by="age">TASK SCORE</mfDefaultSorter>
+        </th>
+        <th style="width: 10%; text-align: center;">
+            <mfDefaultSorter by="email">WEEK SCORE</mfDefaultSorter>
+        </th>
+        <th style="width: 10%; text-align: center;">
+            <mfDefaultSorter by="city">TOTAL SCORE</mfDefaultSorter>
+        </th>
+    </tr>
+    <tr  *ngFor="let item of restItems.weeklyReport; let i = index">
+        <td style="width: 10%; text-align: center;">{{item.weekNumber}}</td>
+        <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.pointsScored}}</mfDefaultSorter></td>
+        <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.level}}</mfDefaultSorter></td>
+        <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.taskScore}}</mfDefaultSorter></td>
+        <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.weekScore}}</mfDefaultSorter></td>
+        <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.TotalScore}}</mfDefaultSorter></td>
+    </tr> 
+    <!-- <tfoot>
+        <tr>
+            <td colspan="4">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+        </tfoot> -->
+    </table><br><br>
+    <div class="center" *ngIf="checker">Mobile Number Doesn't exists</div>
+    <!-- <button (click)="refresh()" class="search">Check other</button> -->
+</div>
+
+
+     
+    <!-- <span *ngIf="flag1" class="searchbar">
+    <input style="float:left;" [(ngModel)]="values" placeholder="Enter Mobilel Number" id = "mobileno" required>
+    <button  (click)="onClickMe()"  >Search</button>
+    </span> -->
+    

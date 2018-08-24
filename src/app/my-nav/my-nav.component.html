@@ -1,0 +1,38 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+    [opened]="!(isHandset | async)!.matches">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item style="color: #fff;" (click)="display()" >View Performance</a>
+      <a mat-list-item style="color: #fff;" (click)="display2()" >Upload Questions</a>
+      <a mat-list-item style="color: #fff;" (click)="display3()" >View Feedbacks</a>
+      <a mat-list-item style="color: #fff;" (click)="display4()" >Verify Tasks</a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="(isHandset | async)!.matches">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      
+      <span>Qshala</span>
+      <a style="color: #fff; float:right; margin-left:78%; cursor: pointer;" routerLink="/" class="logout">Logout</a>
+    </mat-toolbar>
+    <!-- <router-outlet></router-outlet> -->
+   <div *ngIf="flag1"><app-first-page ></app-first-page></div>
+   <div *ngIf="flag2"><app-second-page></app-second-page></div>
+   <div *ngIf="flag3"><app-third-page></app-third-page></div>
+   <div *ngIf="flag4"><app-verify-tasks></app-verify-tasks></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

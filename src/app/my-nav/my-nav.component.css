@@ -1,0 +1,39 @@
+.sidenav-container {
+  height: 100%;
+  background-color: #274c7c;
+}
+
+.sidenav {
+  width: 200px;
+  background: #274c7c !important;
+}
+.mat-drawer-container {
+   background-color: white; 
+  color:#274c7c;
+}
+.mat-toolbar.mat-primary {
+  background: #274c7c !important;
+  color: #fff;
+}
+a:hover {
+  color: red;
+}
+a:active {
+  color: yellow;
+}
+
+/* LOGOUT BUTTON CSS */
+.logout
+{
+  background-color: #f6b319;
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+/* .logout:hover {
+  background-color: skyblue;
+  
+} */

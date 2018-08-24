@@ -1,0 +1,15 @@
+<div *ngIf="undefined === restItems">Loading...</div>
+<div *ngIf="undefined !== restItems">
+  <br>
+  <mat-card class="container" *ngFor="let item of restItems.allSubmittedTasks | paginate: { id: 'foo',itemsPerPage: 5, currentPage: p }">
+    <img src="#" alt="Avatar" src="../../assets/icons/baseline-account_circle-24px.svg" style="width:100%;" />
+    <figcaption>
+      <b>{{item.name}}</b>
+    </figcaption>
+    <button (click)="openview()" (click)="passId(item.taskID,item.userID)" [disabled]="item.status == 'completed'" class="buttons">View</button>
+    <p>{{item.taskTitle}}</p>
+    <span class="time-left">Status: {{item.status}}</span>
+    <span class="time-right">Submission Date: {{item.submissionDate | date:'medium' }}</span>
+  </mat-card>
+  <pagination-controls id="foo" (pageChange)="p = $event" class="pageFooter"></pagination-controls>
+</div>

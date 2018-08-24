@@ -1,0 +1,13 @@
+<h2 style="text-align: center">User Feedbacks</h2>
+
+<div *ngIf="undefined === restItems">Loading...</div>
+<div *ngIf="undefined !== restItems">
+<div class="container" *ngFor="let item of restItems.feedbackList | paginate: { id: 'foo',itemsPerPage: 4, currentPage: p } ">
+  <img src="/assets/icons/baseline-account_circle-24px.svg" alt="Avatar" style="width:100%;" />
+  <figcaption><b>{{item.userName}}</b></figcaption>
+  <p class="feedbacks">{{item.comment}}</p>
+  <!-- <span class="time-left">{{item.userID}}</span> -->
+  <span class="time-right">{{item.createdTime | date:'medium'}}</span>
+</div>
+<pagination-controls id="foo" (pageChange)="p = $event" class="pageFooter"></pagination-controls>
+</div>   
