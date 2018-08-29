@@ -3,6 +3,7 @@
 </div>
 <div *ngIf="restItems">
   <div>
+      <i (click)=" onNoClick()" class="fa close">&#xf00d;</i>
     <img *ngIf="restItems.profileUrl" src={{restItems.profileUrl}} alt="Avatar" class="images" />
     <img *ngIf="!restItems.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG" class="images"><br>
     <div><b>Name: {{restItems.name}}</b></div>
