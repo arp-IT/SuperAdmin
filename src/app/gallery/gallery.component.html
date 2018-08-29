@@ -1,46 +1,32 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<div *ngIf="!restItems && !connection"  class="spinner"><mat-spinner [diameter]=100></mat-spinner></div>
+<div *ngIf="!restItems && !connection" class="spinner">
+  <mat-spinner [diameter]=40></mat-spinner>
+</div>
 <div *ngIf="restItems">
-<div fxLayout="column" fxFlex="20" class="left-layout" >
-    <img src="/assets/icons/baseline-account_circle-24px.svg" alt="Avatar" style="width:25%;" class="images" />
-    <h3>Name: {{restItems.name}}</h3>
-    <h3>Date: {{restItems.submissionDate | date:'medium' }}</h3>
-    <h3>Group: {{restItems.group}}</h3>
-</div>
-<div fxLayoutGap fxFlex="60" class="center-layout">
-  <h3>{{restItems.taskTitle}}</h3>
-  <p>{{restItems.description}}</p>
-  <div style="width: 600px; height:400px;">
-  <ngx-image-viewer  [src]="images" [(config)]="config"
-  [(index)]="imageIndexOne"
-  (customEvent)="handleEvent($event)"></ngx-image-viewer>
-  <!-- <img *ngIf="restItems.submittedImgURL" src= {{imagesurl}}{{restItems.submittedImgURL}} alt="Avatar" style="width:100%" class="cardimage"> -->
-</div>
-</div>
-<div fxLayoutGap fxFlex="20" class="right-layout1">
-    <mat-icon  (click)="onNoClick()"><img class="close" src="data:image/png;base64,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"
-      alt="img" style="height:30px; width:30px; float:right;" />
-    </mat-icon>
-    <p>Give point out of 1000  <br>
-      <form novalidate #f="ngForm" (ngSubmit)="sendRestItems()"> 
-              <div class="form-group"
-		   [ngClass]="{
-		'has-danger': scores.invalid && (scores.dirty || scores.touched),
-		'has-success': scores.valid && (scores.dirty || scores.touched)
-	}">
-		<label></label>
-		<input type="number" class="form-control" name="scores" [(ngModel)]="model.scores" #scores="ngModel" max="1000"  pattern="^([0-9]{0,3}|1000)" required>
-    <div class="form-control-feedback" *ngIf="scores.errors && (scores.dirty || scores.touched)">
-				<!-- <p *ngIf="scores.errors.required" [ngStyle]="{'color':'red'}">Score is required</p> -->
-				<p *ngIf="scores.errors.pattern" [ngStyle]="{'color':'red'}">score value must be between 0 to 1000</p>          
+  <div>
+    <img *ngIf="restItems.profileUrl" src={{restItems.profileUrl}} alt="Avatar" class="images" />
+    <img *ngIf="!restItems.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG" class="images"><br>
+    <div><b>Name: {{restItems.name}}</b></div>
+    <div>Date: {{restItems.submissionDate | date:'short' }}</div>
+    <div>Group: {{restItems.group}}</div>
   </div>
-  </div><br>
-  <button type="submit" [disabled]="scores.errors" class="buttons">Submit</button>
-  </form><br>
-  <span [ngStyle]="{'color':coloring}">{{status}}</span>
 
-      <!-- <input type="number" max="1000" (click)="myFunction()" (keyup.enter)="sendRestItems()" onfocus="this.value=''" [(ngModel)]="scores"/><br>
-      <button  [disabled]="!scores"  (click)="sendRestItems()" class="buttons" >OK</button></p><span [ngStyle]="{'color':coloring}">{{status}}</span> -->
+  <div class="text-layout">
+    <h3>{{restItems.taskTitle}}</h3>
+    <pre class="notes">{{restItems.description}}</pre>
+  </div>
+  <div class="ImageViewer">
+    <h3 style="text-align: center">Submitted Image</h3>
+    <ngx-image-viewer [src]="images" [(config)]="config" [(index)]="imageIndexOne" (customEvent)="handleEvent($event)"></ngx-image-viewer>
+    <div><br>
+      <form novalidate #f="ngForm" (ngSubmit)="sendRestItems()">
+        <input placeholder="Give point out of 1000  " type="text" class="form-control" name="scores" [(ngModel)]="model.scores" #scores="ngModel"
+          max="1000" pattern="^([0-9]{0,3}|1000)" required>
+        <button type="submit" [disabled]="scores.errors || !disabled" class="buttons">Submit</button>
+        <div class="form-control-feedback" *ngIf="scores.errors && (scores.dirty || scores.touched)">
+          <p *ngIf="scores.errors.pattern" [ngStyle]="{'color':'red'}">score value must be between 0 to 1000</p>
+        </div>
+      </form><br>
+      <span [ngStyle]="{'color':coloring}">{{status}}</span></div>
   </div>
 </div>
 <div *ngIf="connection" class="exists">Check your Internet Connection...</div>

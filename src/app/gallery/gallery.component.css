@@ -10,12 +10,13 @@
 .buttons {
     background-color: #f6b319;
     width: 100px;
-    height: 32px;
+    height: 23px;
     border-radius: 7px;
     border: none;
     padding: -8px;
     margin-top: 4px;
     cursor: pointer;
+    margin-left: 4px;
   }
 button:disabled,
 button[disabled]{
@@ -51,8 +52,17 @@ button[disabled]{
 .right-layout {
     text-align: left;
 }
-.center-layout {
+.text-layout {
     text-align: center;
+    height:100%;
+    width:55%;
+    overflow: auto;
+    float: left;
+}
+.ImageViewer{
+width: 40%;
+ height:300px;
+ float: right;
 }
 .left-layout {
     text-align: left;
@@ -69,50 +79,27 @@ button[disabled]{
     cursor: pointer;
 }
 .images {
-    float: left;
-    width: 70px;
-    border-radius: 50%;
-}
-.images.right {
     float: right;
-    margin-left: 20px;
-    margin-right:0;
+    height: 5%;
+    width: 7%;
+    border-radius: 60px;
 }
-.titles {
-    float:left !important;
-    top: 70px;
-    position: absolute;
-    text-align: center;
+.notes {
+    font-family: 'Chathura', sans-serif !important; 
+    font-size: 12px;
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    padding:0px;
+    margin:0px;
+    text-align: left;
+    max-height:300px;
+    text-overflow: auto;
 }
-.titles1 {
-    float: left !important;
-    top: 90px;
-    position: absolute;
-    text-align: center;
-}
-.titles2 {
-    float: left !important;
-    top: 110px;
-    position: absolute;
-    text-align: center;
-}
-/* Card Image */
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 80%;
-    height:100%;
-    margin-left:10%;
-}
-.cardimage {
-    max-width:400px;
-    max-height: 400px;
-    margin-left:10%;
-    margin-top: 10%;
-}
-
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.close {
+    float: right;
 }
 
 .container {

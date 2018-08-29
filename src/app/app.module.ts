@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule,MatButtonModule,MatSidenavModule,MatIconModule,MatListModule,MatCardModule} from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
 import { ThirdPageComponent } from './third-page/third-page.component';
@@ -27,7 +27,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { DataService } from '../app/data.service';
 import { ImageViewerModule } from 'ngx-image-viewer';
 import { InfiniteScrollModule } from '@thisissoon/angular-infinite-scroll';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 const appRoutes: Routes = [
   {
     path: '',
@@ -47,8 +47,8 @@ const appRoutes: Routes = [
     path: 'dashboard',
     component: LoginComponent
   },
-  
-  { path: '**', redirectTo: 'login',pathMatch: 'full' }
+
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }
 
 ];
 
@@ -96,4 +96,4 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

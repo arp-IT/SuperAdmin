@@ -9,13 +9,15 @@ body {
 }
 
 .container {
-    padding-bottom: 20px;
-    padding: 10px;
+    border: 1px solid #dedede;
+    background-color: white;
+    border-radius: 2px;
+    padding: 5px;
     margin: 10px 0;
     margin-left: 10%;
     margin-right: 10%;
-    border-radius: 10px;
-    box-shadow: 5px 5px #888888;
+    width: 80%;
+    
 }
 .container:hover {
     background-color: #FFF;
@@ -29,14 +31,16 @@ body {
 
 .buttons {
     background-color: #f6b319;
-    height: 27px;
-    border-radius: -8px;
+    width: 80px;
+    height: 25px;
+    border-radius: 20px;
     border: none;
     padding: 5px;
+    color: white;
     text-align: center;
+    text-decoration: none;
     cursor: pointer;
     float: right;
-    box-shadow: 5px 5px #888888;
   }
   button:disabled,
   button[disabled]{
@@ -48,7 +52,7 @@ body {
 
 .darker {
     border-color: #ccc;
-    background-color:white;
+    background-color:lightgray;
 }
 
 .container::after {
@@ -72,13 +76,23 @@ body {
 }
 
 .time-right {
+    color: #999;
     float: right;
-    color: #aaa;
+    margin-right: auto;
+    max-width: inherit;
+    word-wrap: break-word;
+    margin-left: inherit;
+    font-size: 12px;
+    margin-top: 10px;
 }
 
 .time-left {
-    float: left;
-    color: #999;
+    margin-right: auto;
+    max-width: inherit;
+    word-wrap: break-word;
+    font-size: 12px;
+    margin-left: inherit;
+    margin: 0px;
 }
 
 .pageFooter {

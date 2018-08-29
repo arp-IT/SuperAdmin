@@ -3,11 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material';
 import { DataService } from '../data.service';
 
-
 class score {
   constructor(
     public scores: string = "",
-  ) {}
+  ) { }
 }
 
 @Component({
@@ -16,20 +15,19 @@ class score {
   styleUrls: ['./gallery.component.css']
 })
 
-
-
 export class GalleryComponent implements OnInit {
-  url ='https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity';
+  url = 'https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity';
   restItems: any;
   sendItems: any;
   taskId;
   userId;
-  imagesurl ='https://s3.ap-south-1.amazonaws.com/qshala-task-activity-images/';
+  imagesurl = 'https://s3.ap-south-1.amazonaws.com/qshala-task-activity-images/';
   flag = false;
   status: string;
-  coloring="#274c7c";
-  connection:boolean=false;
+  coloring = "#274c7c";
+  connection: boolean = false;
   images = [];
+  disabled: boolean = true;
 
   imageIndexOne = 0;
   imageIndexTwo = 0;
@@ -64,7 +62,7 @@ export class GalleryComponent implements OnInit {
     private data: DataService,
     private http: HttpClient,
     public dialogRef: MatDialogRef<GalleryComponent>
-  ) {}
+  ) { }
 
   ngOnInit() {
     console.log();
@@ -83,35 +81,39 @@ export class GalleryComponent implements OnInit {
       this.images[0] = this.imagesurl + restItems['submittedImgURL'];
       console.log(this.restItems);
     },
-    error => {
-      if (error.status === 0)
-      console.log("No Internet connection");
-      this.connection=true;
-    }
-  );
+      error => {
+        if (error.status === 0)
+          console.log("No Internet connection");
+        this.connection = true;
+      }
+    );
   }
 
-  sendRestItems():void {
-    if (this.form.valid) {
-    this.status="Sending..."
-    this.senddata()
-      .subscribe(
-        sendItems => {
-          this.sendItems = sendItems;
-          console.log(this.sendItems.status);
-          if(this.sendItems.status == "COMPLETED"){
-            this.status="Score Sent Successfully"
-            this.coloring="green";
-            this.flag=true;
-            this.model.scores=null;
+  sendRestItems(): void {
+    var r = confirm("Are you sure you want to submit!");
+    if (this.form.valid && r == true) {
+      this.disabled = false;
+      this.status = "Sending..."
+      this.senddata()
+        .subscribe(
+          sendItems => {
+            this.sendItems = sendItems;
+            console.log(this.sendItems.status);
+            if (this.sendItems.status == "COMPLETED") {
+              this.status = "Score Sent Successfully"
+              this.coloring = "green";
+              this.flag = true;
+              this.model.scores = null;
+            }
+            else {
+              this.coloring = "red";
+              this.disabled = true;
+              this.status = "Failed to Send Score";
+            }
           }
-          else {
-            this.coloring="red";
-            this.status = "Failed to Send Score";}
-        }
-      )
+        )
+    }
   }
-}
   getdata() {
     console.log(this.taskId);
     console.log(this.userId);
@@ -125,19 +127,18 @@ export class GalleryComponent implements OnInit {
     );
   }
 
-  senddata()
-    {
-      console.log('service');
-      this.status="Sending...";
-      console.log(this.model.scores)
-      return this.http.post(
+  senddata() {
+    console.log('service');
+    this.status = "Sending...";
+    console.log(this.model.scores)
+    return this.http.post(
       'https://g4e59shy99.execute-api.ap-south-1.amazonaws.com/Dev/usertaskassessment',
       {
-        "userID":this.userId,
-        "taskID":this.taskId,
+        "userID": this.userId,
+        "taskID": this.taskId,
         "score": this.model.scores,
       }
-      )
+    )
   }
 
   onNoClick(): void {
@@ -145,6 +146,6 @@ export class GalleryComponent implements OnInit {
     this.dialogRef.close();
   }
   myFunction() {
-    this.status='';
+    this.status = '';
   }
 }

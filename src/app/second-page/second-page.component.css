@@ -8,6 +8,45 @@
 .fileDisplay {
     margin-top:10px !important;
 }
+.button1 {
+    background-color: #f6b319;
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    border:none;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .button2 {
+    background-color: #f6b319;
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    border:none;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .button3 {
+    background-color: #f6b319;
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    border:none;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
 .buttons {
   background-color: #f6b319;
   width: 150px;
@@ -15,6 +54,7 @@
   border-radius: 20px;
   border:none;
   padding: 5px;
+  color: white;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -27,7 +67,6 @@ button[disabled]{
 }
 
 .mat-card {
-    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1) !important;
     display: block !important;
     position: relative !important;
     padding: 24px !important;
@@ -35,4 +74,11 @@ button[disabled]{
     margin-left: 10% !important;
     border-radius: 2px !important;
     margin-right: 10% !important;
+    border: 1px solid lightgray;
+    box-shadow: 0 0px 0px 0px rgba(0,0,0,.2), 0 0px 0px 0 rgba(0,0,0,.14), 0 0px 0px 0 rgba(0,0,0,.12) !important;
+}
+
+.mylebels
+{
+    min-width: 40px !important;
 }

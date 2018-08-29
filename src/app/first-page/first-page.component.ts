@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-first-page',
   templateUrl: './first-page.component.html',
@@ -9,42 +9,43 @@ import {NgForm} from '@angular/forms';
 })
 export class FirstPageComponent implements OnInit {
   name: string = '';
-  flag1=true;
-  flag2=false;
-  flag3=false;
+  flag1 = true;
+  flag2 = false;
+  flag3 = false;
   restItems: any;
   restItemsUrl = 'https://en25nerdu6.execute-api.ap-south-1.amazonaws.com/ViewPerformance-Dev/';
   mobileNO;
-  connection:boolean=false;
+  connection: boolean = false;
   textValue = 'initial value';
-  values:number;
+  values: number;
   onClickMe() {
-    this.restItems=null;
-    if((this.values > 999999999 && this.values <= 9999999999) && ((this.values*10)%10 == 0)){
-    this.flag1 = false;
-    this.flag2 = true;
-    this.flag3 = false;
-    this.mobileNO = this.values;
-    console.log(this.mobileNO);
-    this.getRestItems();
+    console.log(this.values);
+    this.restItems = null;
+    if ((this.values > 999999999 && this.values <= 9999999999) && ((this.values * 10) % 10 == 0)) {
+      this.flag1 = false;
+      this.flag2 = true;
+      this.flag3 = false;
+      this.mobileNO = this.values;
+      console.log(this.mobileNO);
+      this.getRestItems();
+    }
+
+    else {
+      alert("Enter valid mobile number");
+      this.flag1 = true;
+      this.flag2 = false;
+    }
   }
-  
-   else{
-     alert("Enter valid mobile number");
+
+  refresh(): void {
     this.flag1 = true;
     this.flag2 = false;
-  }
-}
+    this.values = 0;
 
-refresh(): void {
-  this.flag1 = true;
-    this.flag2 = false;
-    this.values=0;
-    
-}
+  }
   constructor(private http: HttpClient) { }
 
-  ngOnInit() {  }
+  ngOnInit() { }
 
   getRestItems(): void {
     this.restItemsServiceGetRestItems()
@@ -52,17 +53,17 @@ refresh(): void {
         restItems => {
           this.restItems = restItems;
           console.log(this.restItems);
-          if(this.restItems.status == 'NoUser') {
-            this.flag3=true;
-            this.flag2=false;
+          if (this.restItems.status == 'NoUser') {
+            this.flag3 = true;
+            this.flag2 = false;
           }
         },
         error => {
           if (error.status === 0) {
-            this.connection= true;
-          console.log("No Internet connection"); 
+            this.connection = true;
+            console.log("No Internet connection");
+          }
         }
-      }
       )
   }
 

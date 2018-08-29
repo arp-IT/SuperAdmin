@@ -15,21 +15,30 @@
   background: #274c7c !important;
   color: #fff;
 }
-/* a:hover {
-  color: red;
-}
-a:active {
-  color: yellow;
-} */
+
+
 .logo
 {
-    height: 15%;
-    width: 100%;
-    margin-left: -16px;
+    height: 60%;
+    width: 80%;
     margin-top: 7px;
+    margin-bottom: 30px;
+    margin-left: 15px;
 } 
 
-/* LOGOUT BUTTON CSS */
+.mat-toolbar-row, .mat-toolbar-single-row {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  display: none !important;
+}
+.toolbar {
+  display: none;
+}
 .logout
 {
   background-color: #f6b319;
@@ -45,7 +54,3 @@ a:active {
     margin-left: 77%;
     cursor: pointer;
 }
-/* .logout:hover {
-  background-color: skyblue;
-  
-} */

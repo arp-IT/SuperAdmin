@@ -1,20 +1,22 @@
-<div *ngIf="undefined === restItems && !connection"  class="spinner"><mat-spinner [diameter]=100></mat-spinner></div>
+<p style="text-align: center; font-size: 18px;">Verify Tasks</p>
+<div *ngIf="undefined === restItems && !connection" class="spinner">
+  <mat-spinner [diameter]=40></mat-spinner>
+</div>
 <div *ngIf="undefined !== restItems">
   <br>
-  <mat-card class="container" *ngFor="let item of restItems.allSubmittedTasks | paginate: { id: 'foo',itemsPerPage: 5, currentPage: p }">
-    <img src="#" alt="Avatar" src="../../assets/icons/baseline-account_circle-24px.svg" style="width:100%;" />
-    <figcaption>
-      <b>{{item.name}}</b>
-    </figcaption>
-    <button (click)="openview()" (click)="passId(item.taskID,item.userID)"   class="buttons">View</button>
-    <p>{{item.taskTitle}}</p>
-    <span class="time-left">Status: {{item.status}}</span>
-    <span class="time-right">Submission Date: {{item.submissionDate | date:'medium' }}</span>
-  </mat-card>
-  <pagination-controls id="foo" (pageChange)="p = $event" class="pageFooter"></pagination-controls>
+  <div class="container" *ngFor="let item of restItems.allSubmittedTasks | paginate: { id: 'foo',itemsPerPage: 5, currentPage: p }">
+    <img *ngIf="item.profileUrl" alt="loading..." src={{item.profileUrl}} style="width:100%;" />
+    <img *ngIf="!item.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG">
+    <button (click)="openview()" (click)="passId(item.taskID,item.userID)" class="buttons">View</button>
+    <div class="time-left" style="font-weight: bold; margin-top: 8px;"><span style="float: left; width: 50px; font-weight: bold">Name:</span>{{item.name}}</div>
+    <div class="time-left"><span style="float: left; width: 50px;">Title:</span>{{item.taskTitle}}</div>
+    <div class="time-left">
+      <span *ngIf="item.status == 'processing'" class="time-left"><span style="float: left; width: 50px;">Status:</span>Under
+        Review</span>
+      <span class="time-right"><span style="float: left; width: 105px; font-weight: bold">Submission Date: </span>{{item.submissionDate
+        | date:'short' }}</span>
+    </div>
+  </div>
+  <pagination-controls id="foo" *ngIf="restItems.allSubmittedTasks.length > 0" (pageChange)="p = $event" class="pageFooter"></pagination-controls>
 </div>
 <div *ngIf="connection" class="exists">Check your Internet Connection...</div>
-<!-- [disabled]="item.status == 'completed'" -->
-
-
-<!-- *ngIf="undefined === restItems" -->

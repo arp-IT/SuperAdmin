@@ -5,11 +5,11 @@ body {
 }
 
 .container {
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
+    border: 1px solid #dedede;
+    background-color: white;
+    border-radius: 2px;
     padding: 10px;
-    margin: 20px 0;
+    margin: 10px 0;
     margin-left:10%;
     margin-right: 10%;
     width:80%;
@@ -30,10 +30,11 @@ body {
   
 .feedbacks {
     text-align: left;
-    margin-left: inherit;
     margin-right: auto;
     max-width: inherit;
     word-wrap: break-word;
+    margin-left: inherit;
+    font-size: 12px;
 }
 
 .darker {
@@ -53,6 +54,7 @@ body {
     width: 100%;
     margin-right: 20px;
     border-radius: 50%;
+    margin-top: 5px;
 }
 
 .container img.right {
@@ -64,6 +66,7 @@ body {
 .time-right {
     float: right;
     color: #aaa;
+    font-size: 12px;
 }
 
 .time-left {
@@ -74,6 +77,12 @@ body {
 .pageFooter {
     text-align:center;
     
+}
+.mat-drawer-container {
+    background-color: white;
+    color: #274c7c;
+    text-align: inherit;
+    font-size: 14px;   
 }
 
 .my-pagination .ngx-pagination .current {
@@ -90,12 +99,3 @@ body {
     padding-top: 15%;
     padding-left: 45%;
 }
-
-
-/* ************************************** TEST **************************************************************  */
-
-  
-  
-
-
-  /* ************************************** TEST **************************************************************  */

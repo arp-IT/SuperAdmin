@@ -1,23 +1,26 @@
-
+<p style="text-align: center; font-size: 18px;">View Performance</p>
 <div class="topnav">
         
         <div class="search-container">
-          <form action="/action_page.php">
-            <input type="number"  [(ngModel)]="values" placeholder="Search.." name="search">
-             <img (click)="onClickMe()" (keyup.enter)="onClickMe()" src="../../assets/icons/baseline-search-24px.svg" id="myImg">
+          <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+            <input type="text" placeholder="Enter Mobile No..." [(ngModel)]="values" name="mobileNo">
+            <button (click)="onClickMe()" (keyup.enter)="onClickMe()"><i class="fa fa-search"></i></button>
           </form>
+          <p *ngIf="flag3" class="allready" >User does not exists</p> 
         </div> 
 </div>    
 <div *ngIf="flag2">
-<div class="center" *ngIf="restItems == undefined && !connection" class="spinner"><mat-spinner [diameter]=100></mat-spinner></div>
+<div class="center" *ngIf="restItems == undefined && !connection" class="spinner"><mat-spinner [diameter]=40></mat-spinner></div>
 
 
 <div *ngIf="restItems" class ="container">
-  <ul style = "list-style-type: none;">
-    <li><b>Name: {{restItems.userName}}</b></li>
-    <li><b>Class: {{restItems.standard}}</b></li>
-    <li><b>School: {{restItems.school}}</b></li>
+  <ul style = "list-style-type: none; float:left;">
+    <li><span style="float: left; width: 100px;">Name:</span>{{restItems.userName}}</li>
+    <li><span style="float: left; width: 100px;">Class: </span>{{restItems.standard}}</li>
+    <li><span style="float: left; width: 100px;">School:</span>{{restItems.school}}</li>
   </ul>
+  <img style = "float:right;width:8%;height:10%;border:0px;border-radius: 80px;" *ngIf="restItems.profileUrl" src={{restItems.profileUrl}} alt="Avatar"  />
+  <img style = "float:right;width:8%;height:10%;border:0px;border-radius: 80px;" *ngIf="!restItems.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG" />
 </div>
 
 <table *ngIf="restItems"  id="customers" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
@@ -60,8 +63,9 @@
     <div class="center" *ngIf="checker">Mobile Number Doesn't exists</div>
     <!-- <button (click)="refresh()" class="search">Check other</button> -->
 </div>
-<div *ngIf="flag3" class="exists">User Does not exists</div>
-<div *ngIf="connection" class="exists">Check your Internet Connection</div>
+<div *ngIf="flag1" class="default">Enter the phone number of registered user to view their performance</div>
+
+<div *ngIf="connection" class="exists">Check your Internet Connection...</div>
 
      
     <!-- <span *ngIf="flag1" class="searchbar">
