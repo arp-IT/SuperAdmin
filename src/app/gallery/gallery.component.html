@@ -25,9 +25,10 @@
         <button type="submit" [disabled]="scores.errors || !disabled" class="buttons">Submit</button>
         <div class="form-control-feedback" *ngIf="scores.errors && (scores.dirty || scores.touched)">
           <p *ngIf="scores.errors.pattern" [ngStyle]="{'color':'red'}">score value must be between 0 to 1000</p>
+          <span [ngStyle]="{'color':coloring}">{{status}}</span>
         </div>
-      </form><br>
-      <span [ngStyle]="{'color':coloring}">{{status}}</span></div>
+      </form>
+      </div>
   </div>
 </div>
 <div *ngIf="connection" class="exists">Check your Internet Connection...</div>

@@ -5,8 +5,6 @@ import { Validators, FormControl } from '@angular/forms';
 import { MatDialog } from "@angular/material";
 import { GalleryComponent } from '../gallery/gallery.component';
 import { DataService } from "../data.service";
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import date from '../../../node_modules/date-and-time';
 
 @Component({
   selector: 'app-verify-tasks',
@@ -25,22 +23,22 @@ export class VerifyTasksComponent implements OnInit {
   galleryView: FormControl;
   imagesurl = "https://s3.ap-south-1.amazonaws.com/qshala-task-activity-images/";
   connection: boolean = false;
+  default:boolean = false;
   constructor(private data: DataService, private http: HttpClient, private dialog: MatDialog) {
   }
   ngOnInit() {
     this.getRestItems();
-    console.log(this.taskId);
   }
   getRestItems(): void {
     this.restItemsServiceGetRestItems()
       .subscribe(
         restItems => {
           this.restItems = restItems;
-          console.log(this.restItems);
+          if(this.restItems.allSubmittedTasks.length == 0)
+          this.default = true;
         },
         error => {
           if (error.status === 0)
-            console.log("No Internet connection");
           this.connection = true;
         }
       )
@@ -53,20 +51,16 @@ export class VerifyTasksComponent implements OnInit {
   }
 
   openview(): void {
-    console.log("666666");
     const dialogRef = this.dialog.open(GalleryComponent, {
       width: "80%",
-      height: "80%",
+      height: "85%",
       panelClass: 'full-screen-modal',
       data: {
         galleryView: this.galleryView
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.getRestItems();
-      console.log("The dialog was closed");
-      console.log(result);
     });
   }
   passId(x, y) {

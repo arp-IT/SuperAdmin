@@ -2,7 +2,8 @@
 <div *ngIf="undefined === restItems && !connection" class="spinner">
   <mat-spinner [diameter]=40></mat-spinner>
 </div>
-<div *ngIf="undefined !== restItems">
+<div *ngIf="default" class="default">There are no tasks to be reviewed at the moment</div>
+<div *ngIf="undefined !== restItems && !default">
   <br>
   <div class="container" *ngFor="let item of restItems.allSubmittedTasks | paginate: { id: 'foo',itemsPerPage: 5, currentPage: p }">
     <img *ngIf="item.profileUrl" alt="loading..." src={{item.profileUrl}} style="width:100%;" />

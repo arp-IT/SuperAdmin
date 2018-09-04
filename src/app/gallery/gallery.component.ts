@@ -23,7 +23,7 @@ export class GalleryComponent implements OnInit {
   userId;
   imagesurl = 'https://s3.ap-south-1.amazonaws.com/qshala-task-activity-images/';
   flag = false;
-  status: string;
+  status: string="";
   coloring = "#274c7c";
   connection: boolean = false;
   images = [];
@@ -65,25 +65,18 @@ export class GalleryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log();
     this.data.currentMessage.subscribe(message => (this.taskId = message));
-    console.log(this.taskId);
     this.data.currentMessage1.subscribe(message1 => (this.userId = message1));
-    console.log(this.userId);
     this.getRestItems();
   }
 
   getRestItems(): void {
-    console.log('component');
     this.getdata().subscribe(restItems => {
-      console.log(restItems);
       this.restItems = restItems;
       this.images[0] = this.imagesurl + restItems['submittedImgURL'];
-      console.log(this.restItems);
     },
       error => {
         if (error.status === 0)
-          console.log("No Internet connection");
         this.connection = true;
       }
     );
@@ -98,7 +91,6 @@ export class GalleryComponent implements OnInit {
         .subscribe(
           sendItems => {
             this.sendItems = sendItems;
-            console.log(this.sendItems.status);
             if (this.sendItems.status == "COMPLETED") {
               this.status = "Score Sent Successfully"
               this.coloring = "green";
@@ -115,9 +107,6 @@ export class GalleryComponent implements OnInit {
     }
   }
   getdata() {
-    console.log(this.taskId);
-    console.log(this.userId);
-    console.log('service');
     return this.http.post(
       'https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity',
       {
@@ -128,9 +117,7 @@ export class GalleryComponent implements OnInit {
   }
 
   senddata() {
-    console.log('service');
     this.status = "Sending...";
-    console.log(this.model.scores)
     return this.http.post(
       'https://g4e59shy99.execute-api.ap-south-1.amazonaws.com/Dev/usertaskassessment',
       {
@@ -142,10 +129,6 @@ export class GalleryComponent implements OnInit {
   }
 
   onNoClick(): void {
-    console.log('CLOSE');
     this.dialogRef.close();
-  }
-  myFunction() {
-    this.status = '';
   }
 }

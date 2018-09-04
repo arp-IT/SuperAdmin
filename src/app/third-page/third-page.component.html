@@ -3,7 +3,7 @@
   <mat-spinner [diameter]=40></mat-spinner>
 </div>
 <div *ngIf="!spinner">
-  <div id="infinite-scroll" snInfiniteScroll (scrollEnd)="onScrollEnd()" [offset]="230" [disabled]="disabled" class="foo" *ngIf="undefined !== restItems">
+  <div id="infinite-scroll" snInfiniteScroll (scrollEnd)="onScrollEnd()" [offset]="30" [disabled]="disabled" class="foo" *ngIf="undefined !== restItems">
     <div class="container" *ngFor="let item of restItems">
       <img *ngIf="item.profileUrl" src={{item.profileUrl}} alt="Avatar" style="width:100%;" />
       <img *ngIf="!item.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG">
@@ -13,6 +13,7 @@
     </div>
     <!-- <div>{{restItems | json}}</div> -->
     <!-- <pagination-controls id="foo" (pageChange)="p = $event" class="pageFooter"></pagination-controls> -->
+    <mat-spinner class="loading" *ngIf="loading" [diameter]=40></mat-spinner>
   </div>
 </div>
 <div *ngIf="connection" class="exists">Check your Internet Connection...</div>

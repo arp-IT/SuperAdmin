@@ -13,14 +13,14 @@ body {
     margin-left:10%;
     margin-right: 10%;
     width:80%;
-
 }
+
 .exists {
     color:red;
     font-size: 20px;
     text-align: center;
     padding-top: 30px;
-  }
+}
   
 .foo {
     border: 0px solid #333;
@@ -98,4 +98,9 @@ body {
     stroke: #f6b319;
     padding-top: 15%;
     padding-left: 45%;
+}
+
+.loading {
+    text-align: center;
+    margin-left: 50%;
 }

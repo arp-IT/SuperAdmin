@@ -79,30 +79,24 @@ export class SecondPageComponent implements OnInit {
     let promise = new Promise((res, err) => {
       this.coloring = "#274c7c";
       this.status = "Sending...";
-      console.log("Sending...");
       const req = this.http.post('https://2sy3qrpxqi.execute-api.ap-south-1.amazonaws.com/Dev/uploadquestionandanswer', {
         "bucketName": "qshala-excel-upload",
         "fileName": this.fileName,
       })
         .subscribe(
           res => {
-            console.log(res);
-            console.log(this.fileName);
             if (res == "All Done..!!") {
-              console.log("SucessFully Uploaded");
               this.coloring = "green";
               this.Fileupload1();
               this.status = "File Upload Successful"
             }
             else {
-              console.log("Invalid format");
               this.Fileupload1();
               this.coloring = "red";
               this.status = "Invalid format";
             }
           },
           err => {
-            console.log("Error occured");
             this.coloring = "red";
             this.status = "Uploading Failed";
           }
@@ -117,7 +111,6 @@ export class SecondPageComponent implements OnInit {
     let promise = new Promise((res, err) => {
       this.coloring1 = "#274c7c";
       this.status1 = "Sending...";
-      console.log("Sending...");
       const req = this.http.post('https://dus93oc6he.execute-api.ap-south-1.amazonaws.com/Dev/uploadreleaseexcel', {
         "bucketName": "qshala-excel-upload",
         "fileName": this.fileName1,
@@ -125,21 +118,16 @@ export class SecondPageComponent implements OnInit {
         .subscribe(
           res => {
             if (res == "Release excel Upload...") {
-              console.log(res);
-              console.log(this.fileName1);
-              console.log("SucessFully Uploaded");
               this.coloring1 = "green";
               this.status1 = "File Upload Successful"
             }
             else {
-              console.log("Invalid format");
               this.coloring1 = "red";
               this.status1 = "Invalid format"
             }
 
           },
           err => {
-            console.log("Error occured");
             this.coloring1 = "red";
             this.status1 = "Uploading Failed";
           }
@@ -153,21 +141,16 @@ export class SecondPageComponent implements OnInit {
     let promise = new Promise((res, err) => {
       this.coloring2 = "#274c7c";
       this.status2 = "Sending...";
-      console.log("Sending...");
       const req = this.http.post('https://5ggfurv7z8.execute-api.ap-south-1.amazonaws.com/Dev/uploadactivityexcel', {
         "bucketName": "qshala-excel-upload",
         "fileName": this.fileName2,
       })
         .subscribe(
           res => {
-            console.log(res);
-            console.log(this.fileName2);
-            console.log("SucessFully Uploaded");
             this.coloring2 = "green";
             this.status2 = "File Upload Successful"
           },
           err => {
-            console.log("Error occured");
             this.coloring2 = "red";
             this.status1 = "Uploading Failed";
           }
@@ -179,21 +162,17 @@ export class SecondPageComponent implements OnInit {
 
   Fileupload() {
     this.coloring = "#274c7c";
-    this.status = "Uploading..."
-    console.log("Uploading..")
+    this.status = "Uploading...";
     this.upload().then(post => {
       this.result = post;
-      console.log(this.result);
       if (this.result.Location) {
         this.coloring = "green";
         this.status = "Uploaded"
-        console.log("Uploaded");
         this.sendname();
       }
       else {
         this.coloring = "red";
         this.status = "Failed to upload";
-        console.log("Failed to Upload");
       }
     }
     )
@@ -204,20 +183,16 @@ export class SecondPageComponent implements OnInit {
   Fileupload1() {
     this.coloring1 = "#274c7c";
     this.status1 = "Uploading..."
-    console.log("Uploading..")
     this.upload1().then(post => {
       this.result = post;
-      console.log(this.result);
       if (this.result.Location) {
         this.coloring1 = "green";
         this.status1 = "Uploaded"
-        console.log("Uploaded");
         this.sendname1();
       }
       else {
         this.coloring1 = "red";
         this.status = "Failed to upload";
-        console.log("Failed to Upload");
       }
     }
     )
@@ -227,17 +202,14 @@ export class SecondPageComponent implements OnInit {
   Fileupload2() {
     this.coloring2 = "#274c7c";
     this.status2 = "Uploading..."
-    console.log("Uploading..")
     this.upload2().then(post => {
       this.result = post;
-      console.log(this.result);
       if (this.result.Location) {
         this.coloring2 = "green";
         this.status2 = "Uploaded"
-        console.log("Uploaded");
         this.sendname2();
       }
-      else { this.coloring2 = "red"; this.status = "Failed to upload"; console.log("Failed to Upload"); }
+      else { this.coloring2 = "red"; this.status = "Failed to upload";  }
 
     }
     )

@@ -105,3 +105,10 @@ body {
     text-align: center;
     padding-top: 150px;
   }
+
+  .default {
+    color:gray;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 200px; 
+  }

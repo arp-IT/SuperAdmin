@@ -43,12 +43,12 @@ const appRoutes: Routes = [
     canActivate: [AuthguardGuard],
     component: MyNavComponent
   },
-  {
-    path: 'dashboard',
-    component: LoginComponent
-  },
-
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
+  
+  { 
+  path: '**', 
+  redirectTo: 'login', 
+  pathMatch: 'full' 
+  }
 
 ];
 

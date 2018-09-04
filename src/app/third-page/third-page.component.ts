@@ -17,10 +17,13 @@ export class ThirdPageComponent implements OnInit {
   lasttime;
   spinner: boolean = true;
   connection: boolean = false;
+  temp: number = 0;
+  loading: boolean = false;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.temp = 0;
     this.today = new Date;
     this.getRestItems();
 
@@ -38,24 +41,19 @@ export class ThirdPageComponent implements OnInit {
         restItems => {
           this.restItems = [...this.restItems, ...restItems['feedbackList']];
           this.position = Object.keys(this.restItems).length;
-          console.log(restItems['feedbackList']);
-          console.log(this.restItems[this.position - 1]);
           this.spinner = false;
+          this.loading = false;
           this.lasttime = this.restItems[this.position - 1].createdTime;
-          console.log(this.lasttime);
-          console.log(this.today);
         },
         error => {
           if (error.status === 0) {
             this.connection = true;
-            console.log("No Internet connection");
           }
         }
       )
   }
 
   restItemsServiceGetRestItems() {
-    console.log(this.today)
     let headers: HttpHeaders = new HttpHeaders({
       beforeTime: this.today
     });
@@ -67,12 +65,12 @@ export class ThirdPageComponent implements OnInit {
     ).pipe(map(data => data));
   }
   onScrollEnd() {
-    console.log(this.today);
-    this.today = this.lasttime;
-    console.log(this.lasttime);
-    console.log(this.today);
-    this.getRestItems();
-    console.log("scroling");
+       if(this.position >= this.temp) {
+      this.temp = this.temp + 100;
+      this.loading = true;
+      this.today = this.lasttime;
+      this.getRestItems();
+       }
   }
-
+  
 }
