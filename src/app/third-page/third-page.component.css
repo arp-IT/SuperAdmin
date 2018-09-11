@@ -21,20 +21,26 @@ body {
     text-align: center;
     padding-top: 30px;
 }
-  
+
 .foo {
     border: 0px solid #333;
     height: 600px;
     overflow: auto;
   }
-  
+
 .feedbacks {
     text-align: left;
     margin-right: auto;
     max-width: inherit;
-    word-wrap: break-word;
     margin-left: inherit;
     font-size: 12px;
+    font-family: 'Chathura', sans-serif !important;
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    text-overflow: auto;
 }
 
 .darker {
@@ -76,17 +82,17 @@ body {
 
 .pageFooter {
     text-align:center;
-    
+
 }
 .mat-drawer-container {
     background-color: white;
     color: #274c7c;
     text-align: inherit;
-    font-size: 14px;   
+    font-size: 14px;
 }
 
 .my-pagination .ngx-pagination .current {
-    padding: 0.1875rem 0.625rem !important; 
+    padding: 0.1875rem 0.625rem !important;
     background: #274c7c !important;
     color: #fefefe !important;
     cursor: pointer !important;

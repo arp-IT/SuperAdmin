@@ -106,3 +106,7 @@ width: 40%;
 .container {
     padding: 2px 16px;
 }
+
+th,td {
+    width : 180px;
+}

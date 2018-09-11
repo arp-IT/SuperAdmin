@@ -8,7 +8,7 @@
       <img *ngIf="item.profileUrl" src={{item.profileUrl}} alt="Avatar" style="width:100%;" />
       <img *ngIf="!item.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG">
       <p class="feedbacks"><b>{{item.userName}}</b></p>
-      <p class="feedbacks">{{item.comment}}</p>
+      <pre class="feedbacks">{{item.comment}}</pre>
       <span class="time-right">{{item.createdTime | date:'short'}}</span>
     </div>
     <!-- <div>{{restItems | json}}</div> -->

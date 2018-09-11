@@ -22,16 +22,19 @@ import { MatInputModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { AuthguardGuard } from '../app/authguard.guard';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DataService } from '../app/data.service';
 import { ImageViewerModule } from 'ngx-image-viewer';
 import { InfiniteScrollModule } from '@thisissoon/angular-infinite-scroll';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AngularWebStorageModule } from 'angular-web-storage';
+
+
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
@@ -41,15 +44,20 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     canActivate: [AuthguardGuard],
-    component: MyNavComponent
+    component: DashboardComponent,
+    children: [
+      {path: '',  canActivate: [AuthguardGuard], redirectTo: 'verifyTasks', pathMatch: 'full'},
+      {path: 'verifyTasks',  canActivate: [AuthguardGuard], component: VerifyTasksComponent},
+      {path: 'upload',  canActivate: [AuthguardGuard], component: SecondPageComponent},
+      {path: 'feedbacks',  canActivate: [AuthguardGuard], component: ThirdPageComponent},
+      {path: 'performance',  canActivate: [AuthguardGuard], component: FirstPageComponent},
+    ]
   },
-  
-  { 
-  path: '**', 
-  redirectTo: 'login', 
-  pathMatch: 'full' 
-  }
-
+  {
+  path: '**',
+  redirectTo: 'login',
+  pathMatch: 'full'
+  },
 ];
 
 @NgModule({
@@ -62,11 +70,12 @@ const appRoutes: Routes = [
     VerifyTasksComponent,
     GalleryComponent,
     LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabled' }),
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -81,18 +90,18 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatDialogModule,
     MatInputModule,
-    FlexLayoutModule,
     NgxPaginationModule,
     ImageViewerModule.forRoot(),
     InfiniteScrollModule,
     MatProgressSpinnerModule,
+    AngularWebStorageModule,
   ],
   entryComponents: [GalleryComponent],
   providers: [
     UploadFileService,
     SecondPageComponent,
     AuthguardGuard,
-    DataService
+    DataService,
   ],
   bootstrap: [AppComponent]
 })

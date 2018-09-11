@@ -2,15 +2,15 @@
 	<img src="../../assets/icons/QshalaLogo.PNG" alt="success" />
 	<form (submit)="loginUser($event)">
 		<mat-form-field color="accent" autocomplete="off" class="form">
-			<input class="inputField" maxlength="10" matInput placeholder="Enter Username" [formControl]="mobileFormControl">
+			<input class="inputField" maxlength="10" matInput placeholder="Enter Username" [formControl]="mobileFormControl" required>
 		</mat-form-field>
 		<br>
 		<mat-form-field color="accent" autocomplete="off" class="form">
-			<input class="inputField" maxlength="10" type="password" matInput placeholder="Enter Password" [formControl]="mobileFormControl">
+			<input class="inputField" maxlength="10" type="password" matInput placeholder="Enter Password" [formControl]="mobileFormControl" required>
 		</mat-form-field>
 
 		<div>
-			<button mat-button class="otp-btn" type="submit">Login</button>
+			<button mat-button class="otp-btn" type="submit"><span>Login</span><span style = "float:right; margin-top: 10px;"  *ngIf="login"><mat-spinner [diameter]=20></mat-spinner></span></button>
 		</div>
 		<div style="text-align: center; color: red;" *ngIf="!flag">
 			<h3>Invalid credentials!</h3>

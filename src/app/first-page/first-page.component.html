@@ -1,14 +1,14 @@
 <p style="text-align: center; font-size: 18px;">View Performance</p>
 <div class="topnav">
-        
+
         <div class="search-container">
           <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
-            <input type="text" placeholder="Enter Mobile No..." [(ngModel)]="values" name="mobileNo">
+            <input type="text" (keyup.backspace)="update()" placeholder="Enter Mobile No..." [(ngModel)]="values" name="mobileNo">
             <button (click)="onClickMe()" (keyup.enter)="onClickMe()"><i class="fa fa-search"></i></button>
           </form>
-          <p *ngIf="flag3" class="allready" >User does not exists</p> 
-        </div> 
-</div>    
+          <p *ngIf="flag3" class="allready" >User does not exists</p>
+        </div>
+</div>
 <div *ngIf="flag2">
 <div class="center" *ngIf="restItems == undefined && !connection" class="spinner"><mat-spinner [diameter]=40></mat-spinner></div>
 
@@ -23,7 +23,7 @@
   <img style = "float:right;width:8%;height:10%;border:0px;border-radius: 80px;" *ngIf="!restItems.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG" />
 </div>
 
-<table *ngIf="restItems"  id="customers" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+<table *ngIf="restItems"  id="customers" [mfData]="" #mf="mfDataTable" [mfRowsOnPage]="5">
     <tr>
         <th style="width: 10%; text-align: center;">
             <mfDefaultSorter by="name">WEEK</mfDefaultSorter>
@@ -51,25 +51,13 @@
         <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.taskScore}}</mfDefaultSorter></td>
         <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.weekScore}}</mfDefaultSorter></td>
         <td style="width: 10%; text-align: center;"><mfDefaultSorter by="email">{{item.totalScore}}</mfDefaultSorter></td>
-    </tr> 
-    <!-- <tfoot>
-        <tr>
-            <td colspan="4">
-                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-            </td>
-        </tr>
-        </tfoot> -->
+    </tr>
+
     </table><br><br>
-    <div class="center" *ngIf="checker">Mobile Number Doesn't exists</div>
+
     <!-- <button (click)="refresh()" class="search">Check other</button> -->
 </div>
 <div *ngIf="flag1" class="default">Enter the phone number of registered user to view their performance</div>
-
 <div *ngIf="connection" class="exists">Check your Internet Connection...</div>
 
-     
-    <!-- <span *ngIf="flag1" class="searchbar">
-    <input style="float:left;" [(ngModel)]="values" placeholder="Enter Mobilel Number" id = "mobileno" required>
-    <button  (click)="onClickMe()"  >Search</button>
-    </span> -->
-    
+

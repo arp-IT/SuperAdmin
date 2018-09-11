@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { HttpHeaders } from "@angular/common/http";
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-third-page',
@@ -11,14 +11,14 @@ import { HttpHeaders } from "@angular/common/http";
 export class ThirdPageComponent implements OnInit {
   restItems = [];
   restItemsUrl = 'https://v83k1hec93.execute-api.ap-south-1.amazonaws.com/Dev/fetchuserfeedback';
-  p: number = 1;
+  p = 1;
   position;
   today;
   lasttime;
-  spinner: boolean = true;
-  connection: boolean = false;
-  temp: number = 0;
-  loading: boolean = false;
+  spinner = true;
+  connection = false;
+  temp = 0;
+  loading = false;
 
   constructor(private http: HttpClient) { }
 
@@ -50,11 +50,11 @@ export class ThirdPageComponent implements OnInit {
             this.connection = true;
           }
         }
-      )
+      );
   }
 
   restItemsServiceGetRestItems() {
-    let headers: HttpHeaders = new HttpHeaders({
+    const headers: HttpHeaders = new HttpHeaders({
       beforeTime: this.today
     });
 
@@ -65,12 +65,12 @@ export class ThirdPageComponent implements OnInit {
     ).pipe(map(data => data));
   }
   onScrollEnd() {
-       if(this.position >= this.temp) {
+       if (this.position >= this.temp) {
       this.temp = this.temp + 100;
       this.loading = true;
       this.today = this.lasttime;
       this.getRestItems();
        }
   }
-  
+
 }

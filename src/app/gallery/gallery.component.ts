@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material';
 import { DataService } from '../data.service';
 
+// tslint:disable-next-line:class-name
 class score {
   constructor(
-    public scores: string = "",
+    public scores: string = '',
   ) { }
 }
 
@@ -23,11 +24,11 @@ export class GalleryComponent implements OnInit {
   userId;
   imagesurl = 'https://s3.ap-south-1.amazonaws.com/qshala-task-activity-images/';
   flag = false;
-  status: string="";
-  coloring = "#274c7c";
-  connection: boolean = false;
+  status = '';
+  coloring = '#274c7c';
+  connection = false;
   images = [];
-  disabled: boolean = true;
+  disabled = true;
 
   imageIndexOne = 0;
   imageIndexTwo = 0;
@@ -57,7 +58,7 @@ export class GalleryComponent implements OnInit {
     }
   };
   model: score = new score();
-  @ViewChild("f") form: any;
+  @ViewChild('f') form: any;
   constructor(
     private data: DataService,
     private http: HttpClient,
@@ -76,34 +77,34 @@ export class GalleryComponent implements OnInit {
       this.images[0] = this.imagesurl + restItems['submittedImgURL'];
     },
       error => {
-        if (error.status === 0)
+        if (error.status === 0) {
         this.connection = true;
+        }
       }
     );
   }
 
   sendRestItems(): void {
-    var r = confirm("Are you sure you want to submit!");
-    if (this.form.valid && r == true) {
+    const r = confirm('Are you sure you want to submit!');
+    if (this.form.valid && r === true) {
       this.disabled = false;
-      this.status = "Sending..."
+      this.status = 'Sending...';
       this.senddata()
         .subscribe(
           sendItems => {
             this.sendItems = sendItems;
-            if (this.sendItems.status == "COMPLETED") {
-              this.status = "Score Sent Successfully"
-              this.coloring = "green";
+            if (this.sendItems.status === 'COMPLETED') {
+              this.status = 'Score Sent Successfully';
+              this.coloring = 'green';
               this.flag = true;
               this.model.scores = null;
-            }
-            else {
-              this.coloring = "red";
+            } else {
+              this.coloring = 'red';
               this.disabled = true;
-              this.status = "Failed to Send Score";
+              this.status = 'Failed to Send Score';
             }
           }
-        )
+        );
     }
   }
   getdata() {
@@ -117,15 +118,15 @@ export class GalleryComponent implements OnInit {
   }
 
   senddata() {
-    this.status = "Sending...";
+    this.status = 'Sending...';
     return this.http.post(
       'https://g4e59shy99.execute-api.ap-south-1.amazonaws.com/Dev/usertaskassessment',
       {
-        "userID": this.userId,
-        "taskID": this.taskId,
-        "score": this.model.scores,
+        'userID': this.userId,
+        'taskID': this.taskId,
+        'score': this.model.scores,
       }
-    )
+    );
   }
 
   onNoClick(): void {

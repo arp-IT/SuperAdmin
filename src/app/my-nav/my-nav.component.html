@@ -4,13 +4,13 @@
     <mat-toolbar color="primary"></mat-toolbar>
     <mat-nav-list>
       <img class="logo" src="../../assets/icons/QshalaLogo.PNG" alt="success" />
-      <a mat-list-item style="color:white;" [ngStyle]="{'background-color':flag4 == true ? 'lightgray' : '#274c7c' }" (click)="display4()">Verify
+      <a mat-list-item style="color:white;" [ngStyle]="{'background-color':flag4 == true ? 'lightgray' : '#274c7c' }" (click)="display4()"  [routerLink]="['./verifyTasks']">Verify
         Tasks</a>
-      <a mat-list-item style="color:white;" [ngStyle]="{'background-color':flag1 == true ? 'lightgray' : '#274c7c' }" (click)="display()">View
+      <a mat-list-item style="color:white;" [ngStyle]="{'background-color':flag1 == true ? 'lightgray' : '#274c7c' }" (click)="display()" [routerLink]="['./performance']">View
         Performance</a>
-      <a mat-list-item style="color:white;" [ngStyle]="{'background-color':flag3 == true ? 'lightgray' : '#274c7c' }" (click)="display3()">View
+      <a mat-list-item style="color:white;" [ngStyle]="{'background-color':flag3 == true ? 'lightgray' : '#274c7c' }" (click)="display3()" [routerLink]="['./feedbacks']">View
         Feedbacks</a>
-      <a mat-list-item style="color:white;" [ngStyle]="{'background-color':flag2 == true ? 'lightgray' : '#274c7c' }" (click)="display2()">Upload
+      <a mat-list-item style="color:white;" [ngStyle]="{'background-color':flag2 == true ? 'lightgray' : '#274c7c' }" (click)="display2()" [routerLink]="['./upload']">Upload
         Questions</a>
       <a mat-list-item style="color:white;" (click)="logout()">Logout</a>
 
@@ -22,20 +22,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span></span>
-
     </mat-toolbar>
-    <!-- <router-outlet></router-outlet> -->
-    <div *ngIf="flag1">
-      <app-first-page></app-first-page>
-    </div>
-    <div *ngIf="flag2">
-      <app-second-page></app-second-page>
-    </div>
-    <div *ngIf="flag3">
-      <app-third-page></app-third-page>
-    </div>
-    <div *ngIf="flag4">
-      <app-verify-tasks></app-verify-tasks>
-    </div>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

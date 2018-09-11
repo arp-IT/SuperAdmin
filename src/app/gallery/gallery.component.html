@@ -6,10 +6,11 @@
       <i (click)=" onNoClick()" class="fa close">&#xf00d;</i>
     <img *ngIf="restItems.profileUrl" src={{restItems.profileUrl}} alt="Avatar" class="images" />
     <img *ngIf="!restItems.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG" class="images"><br>
-    <div><b>Name: {{restItems.name}}</b></div>
-    <div>Date: {{restItems.submissionDate | date:'short' }}</div>
-    <div>Group: {{restItems.group}}</div>
-  </div>
+    <table>
+      <tr><td>Name: </td><td>{{restItems.name}}</td></tr>
+      <tr><td>Date: </td><td>{{restItems.submissionDate | date:'short' }}</td></tr>
+      <tr><td>Group: </td><td>{{restItems.group}}</td></tr>
+    </table>
 
   <div class="text-layout">
     <h3>{{restItems.taskTitle}}</h3>
@@ -30,5 +31,6 @@
       </form>
       </div>
   </div>
+</div>
 </div>
 <div *ngIf="connection" class="exists">Check your Internet Connection...</div>
