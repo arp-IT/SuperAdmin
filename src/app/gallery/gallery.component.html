@@ -6,31 +6,32 @@
       <i (click)=" onNoClick()" class="fa close">&#xf00d;</i>
     <img *ngIf="restItems.profileUrl" src={{restItems.profileUrl}} alt="Avatar" class="images" />
     <img *ngIf="!restItems.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG" class="images"><br>
-    <table>
-      <tr><td>Name: </td><td>{{restItems.name}}</td></tr>
-      <tr><td>Date: </td><td>{{restItems.submissionDate | date:'short' }}</td></tr>
-      <tr><td>Group: </td><td>{{restItems.group}}</td></tr>
-    </table>
-
-  <div class="text-layout">
-    <h3>{{restItems.taskTitle}}</h3>
+    <div style="font-size:14px;">
+     <div><span style ="float: left; width: 4%;">Name</span><span >:</span><span style ="margin-left: 1%;">{{restItems.name}}</span></div>
+     <div><span style ="float: left; width: 4%;">Date</span><span >:</span><span style ="margin-left: 1%;">{{restItems.submissionDate | date:'short' }}</span></div>
+    <div><span style ="float: left; width: 4%;">Group</span><span >:</span><span style ="margin-left: 1%;">{{restItems.group}}</span></div>
+    </div>
+  <div class="left1">
+      <h3 class="tasktitle">{{restItems.taskTitle}}</h3>
+      <div class="text-layout">
     <pre class="notes">{{restItems.description}}</pre>
   </div>
-  <div class="ImageViewer">
-    <h3 style="text-align: center">Submitted Image</h3>
-    <ngx-image-viewer [src]="images" [(config)]="config" [(index)]="imageIndexOne" (customEvent)="handleEvent($event)"></ngx-image-viewer>
-    <div><br>
-      <form novalidate #f="ngForm" (ngSubmit)="sendRestItems()">
-        <input placeholder="Give point out of 1000  " type="text" class="form-control" name="scores" [(ngModel)]="model.scores" #scores="ngModel"
-          max="1000" pattern="^([0-9]{0,3}|1000)" required>
-        <button type="submit" [disabled]="scores.errors || !disabled" class="buttons">Submit</button>
-        <div class="form-control-feedback" *ngIf="scores.errors && (scores.dirty || scores.touched)">
-          <p *ngIf="scores.errors.pattern" [ngStyle]="{'color':'red'}">score value must be between 0 to 1000</p>
-          <span [ngStyle]="{'color':coloring}">{{status}}</span>
-        </div>
-      </form>
-      </div>
   </div>
-</div>
-</div>
+  <div class="right1">
+    <h3 style="text-align: center">Submitted Image</h3>
+    <div class="ImageViewer">
+    <ngx-image-viewer [src]="images" [(config)]="config" [(index)]="imageIndexOne" (customEvent)="handleEvent($event)"></ngx-image-viewer>
+  </div>
+  <form novalidate #f="ngForm" (ngSubmit)="sendRestItems()">
+      <input placeholder="Give point out of 1000  " type="text" class="form-control" name="scores" [(ngModel)]="model.scores" #scores="ngModel"
+        max="1000" pattern="^([0-9]{0,3}|1000)" required>
+      <button type="submit" [disabled]="scores.errors || !disabled" class="buttons">Submit</button>
+      <div class="form-control-feedback" *ngIf="scores.errors && (scores.dirty || scores.touched)">
+        <span *ngIf="scores.errors.pattern" [ngStyle]="{'color':'red'}">score value must be between 0 to 1000</span>
+        <span [ngStyle]="{'color':coloring}">{{status}}</span>
+      </div>
+    </form>
+  </div>
+  </div>
+  </div>
 <div *ngIf="connection" class="exists">Check your Internet Connection...</div>

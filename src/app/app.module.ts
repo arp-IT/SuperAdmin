@@ -29,8 +29,7 @@ import { InfiniteScrollModule } from '@thisissoon/angular-infinite-scroll';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularWebStorageModule } from 'angular-web-storage';
-
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 const appRoutes: Routes = [
   {
     path: '',
@@ -46,17 +45,17 @@ const appRoutes: Routes = [
     canActivate: [AuthguardGuard],
     component: DashboardComponent,
     children: [
-      {path: '',  canActivate: [AuthguardGuard], redirectTo: 'verifyTasks', pathMatch: 'full'},
-      {path: 'verifyTasks',  canActivate: [AuthguardGuard], component: VerifyTasksComponent},
-      {path: 'upload',  canActivate: [AuthguardGuard], component: SecondPageComponent},
-      {path: 'feedbacks',  canActivate: [AuthguardGuard], component: ThirdPageComponent},
-      {path: 'performance',  canActivate: [AuthguardGuard], component: FirstPageComponent},
+      { path: '', canActivate: [AuthguardGuard], redirectTo: 'verifyTasks', pathMatch: 'full' },
+      { path: 'verifyTasks', canActivate: [AuthguardGuard], component: VerifyTasksComponent },
+      { path: 'upload', canActivate: [AuthguardGuard], component: SecondPageComponent },
+      { path: 'feedbacks', canActivate: [AuthguardGuard], component: ThirdPageComponent },
+      { path: 'performance', canActivate: [AuthguardGuard], component: FirstPageComponent },
     ]
   },
   {
-  path: '**',
-  redirectTo: 'login',
-  pathMatch: 'full'
+    path: '**',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
 ];
 
@@ -95,6 +94,7 @@ const appRoutes: Routes = [
     InfiniteScrollModule,
     MatProgressSpinnerModule,
     AngularWebStorageModule,
+    AngularFontAwesomeModule,
   ],
   entryComponents: [GalleryComponent],
   providers: [

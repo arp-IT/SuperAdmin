@@ -28,6 +28,7 @@
     "@thisissoon/angular-infinite-scroll": "^2.0.0",
     "angular-6-datatable": "^0.8.0",
     "angular-animate": "^1.7.2",
+    "angular-font-awesome": "^3.1.2",
     "angular-material": "^1.1.10",
     "angular-web-storage": "^3.0.0",
     "aws-sdk": "^2.286.2",

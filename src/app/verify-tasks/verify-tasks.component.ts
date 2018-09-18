@@ -58,8 +58,8 @@ export class VerifyTasksComponent implements OnInit {
   openview(): void {
      const dialogRef = this.dialog.open(GalleryComponent, {
       width: '80%',
-      height: '85%',
-      panelClass: 'full-screen-modal',
+      // height: '85%',
+      // panelClass: 'full-screen-modal',
       data: {
         galleryView: this.galleryView
       }

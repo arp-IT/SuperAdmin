@@ -56,7 +56,7 @@ form.example::after {
   color:gray;
   font-size: 20px;
   text-align: center;
-  padding-top: 120px; 
+  padding-top: 160px;
 }
 .allready {
   color:red;
@@ -67,9 +67,9 @@ form.example::after {
   background-color: #f2f2f2;
 }
 
-#customers tr:hover   {
+/* #customers tr:hover   {
   background-color: #ddd;
-}
+} */
 
 #customers th {
     padding-top: 12px;
@@ -118,7 +118,7 @@ form.example::after {
 .topnav {
   overflow: hidden;
   background-color: white;
-  
+
 }
 
 .topnav a {
@@ -155,7 +155,18 @@ form.example::after {
 .topnav .search-container button:hover {
   background:white
 }
+.right {
+  margin-left: 7%;
+}
 
+.middle {
+  margin-left: 40px;
+}
+
+.left {
+float: left;
+width: 6%;
+}
 
 @media screen and (max-width: 600px) {
   .topnav .search-container {
@@ -170,6 +181,6 @@ form.example::after {
     padding: 14px;
   }
   .topnav input[type=text] {
-    border: 1px solid #ccc;  
+    border: 1px solid #ccc;
   }
 }

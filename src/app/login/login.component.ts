@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { UserService } from '../user.service';
 import { FormControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ]);
 
 
-  constructor(private router: Router, private user: UserService, private http: HttpClient) {
+  constructor(private router: Router, private user: UserService, private http: HttpClient,  protected localStorage: LocalStorage) {
     this.user.isUserLoggedIn = false;
    }
 
@@ -55,6 +55,10 @@ export class LoginComponent implements OnInit {
             this.user.set(true);
             this.user.get();
             this.user.setUserLoggedIn(this.user.value);
+            localStorage.setItem('flag1', 'false');
+            localStorage.setItem('flag2', 'false');
+            localStorage.setItem('flag3', 'false');
+            localStorage.setItem('flag4', 'true');
             this.router.navigate(['dashboard']);
             this.login = false;
           } else {

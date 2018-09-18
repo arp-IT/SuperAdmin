@@ -110,3 +110,10 @@ body {
     text-align: center;
     margin-left: 50%;
 }
+@media only screen and (min-height: 800px) {
+  .foo {
+  border: 0px solid #333 !important;
+    height: 850px !important;
+    overflow: auto !important;
+  }
+}

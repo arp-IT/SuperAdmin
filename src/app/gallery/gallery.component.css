@@ -35,7 +35,6 @@ button[disabled]{
 
   .spinner {
     stroke: #f6b319;
-    padding-top: 15%;
     padding-left: 45%;
   }
 
@@ -53,16 +52,14 @@ button[disabled]{
     text-align: left;
 }
 .text-layout {
-    text-align: center;
     height:100%;
-    width:55%;
+    width:90%;
     overflow: auto;
-    float: left;
 }
 .ImageViewer{
-width: 40%;
- height:300px;
- float: right;
+ height:320px;
+ width: 95%;
+ overflow: auto;
 }
 .left-layout {
     text-align: left;
@@ -76,7 +73,7 @@ width: 40%;
     font-size:24px;
     float:right;
     margin-top: -25px;
-    margin-right: -20px; 
+    margin-right: -20px;
     cursor: pointer;
 }
 .images {
@@ -86,7 +83,7 @@ width: 40%;
     border-radius: 60px;
 }
 .notes {
-    font-family: 'Chathura', sans-serif !important; 
+    font-family: 'Chathura', sans-serif !important;
     font-size: 12px;
     white-space: pre-wrap;       /* CSS 3 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
@@ -107,6 +104,23 @@ width: 40%;
     padding: 2px 16px;
 }
 
-th,td {
-    width : 180px;
+.left1 {
+  float: left;
+  width: 58%;
+}
+
+.right1 {
+  float: right;
+  width: 42%;
+}
+.tasktitle {
+  margin-left: 40%;
+  margin-top: 20px;
+}
+@media only screen and (min-height: 800px)
+{
+  .tasktitle {
+    margin-left: 40%;
+    margin-top: 17px !important;
+  }
 }

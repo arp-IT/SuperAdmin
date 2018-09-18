@@ -17,7 +17,7 @@ body {
     margin-left: 10%;
     margin-right: 10%;
     width: 80%;
-    
+
 }
 .container:hover {
     background-color: #FFF;
@@ -48,7 +48,7 @@ body {
     color: #666666;
     cursor: not-allowed;
   }
- 
+
 
 .darker {
     border-color: #ccc;
@@ -96,7 +96,7 @@ body {
 }
 
 .pageFooter {
-    text-align:center;  
+    text-align:center;
 }
 
 .exists {
@@ -110,5 +110,30 @@ body {
     color:gray;
     font-size: 20px;
     text-align: center;
-    padding-top: 200px; 
+    padding-top: 200px;
   }
+
+  .right {
+    margin-left: 2%;
+}
+
+.middle {
+    float: left;
+}
+
+.left {
+  float: left;
+  width: 6%;
+}
+@media only screen and (min-height: 800px) {
+
+.cdk-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 75% !important;
+}
+}

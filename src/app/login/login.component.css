@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
   }
-  
+
   .login {
 	  margin-top: 80px;
 	  height: 400px;
@@ -11,7 +11,7 @@
 	  margin-right: auto;
 	  background-color: #274c7c;
   }
-  .material-icons {  
+  .material-icons {
 	  margin-left: 2%;
 	  margin-bottom: 10px;
   }
@@ -19,13 +19,13 @@
 	  margin: 60px 30px 5px 30px;
 	  margin-left: 10%;
 	  width: 80%;
-	  font-size:30px; 
+	  font-size:30px;
 	  height: 55px;
 	  color:white;
 	  border-radius: 10px;
 	  background-color: #f6b319;
   }
-  
+
   :host {
 	  flex-grow: 1;
 	  display: flex;
@@ -40,13 +40,18 @@
   div.input {
 	  position: relative;
   }
+
+
+
+
   .form {
-	  display: block; 
+	  display: block;
 	  position: relative;
 	  flex: auto;
 	  min-width: 0;
 	  width: 245px !important;
-	  margin-left:15px;
+    margin-left:15px;
+
   }
   div.input label {
 	  position: absolute;
@@ -56,35 +61,39 @@
 	  background: white;
 	  padding: 5px 2px;
   }
-  
+
   div.input input {
 	  padding: 10px 20px;
 	  font-size: 25px;
 	  outline: 0;
 	  color: white;
   }
-  
+
   div.input {
 	  margin-top: 20px;
 	  color: white;
   }
-  
+
    ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
 	background-color: white !important;
 	color: white !important
   }
-  
+
   ::ng-deep .mat-form-field-empty.mat-form-field-label {
 	  color: white;
   }
-  ::ng-deep .mat-form-field-ripple { background-color: #f6b319; } 
+  ::ng-deep .mat-form-field-ripple { background-color: #f6b319; }
 
 .inputField {
     width: 90%;
     font-size: 20px;
-    color: white;
+    color: white !important;
+
 }
   .example-container > * {
 	width: 100%;
   }
-	
+
+  ::ng-deep .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    color: white;
+}
