@@ -6,12 +6,13 @@ import { MatDialog } from '@angular/material';
 import { GalleryComponent } from '../gallery/gallery.component';
 import { DataService } from '../data.service';
 import { UserService } from '../user.service';
+import { environment } from '../../environments/environment';
 
 @Component(
   {
   selector: 'app-verify-tasks',
   templateUrl: './verify-tasks.component.html',
-  styleUrls: ['./verify-tasks.component.css']
+  styleUrls: ['./verify-tasks.component.css'],
   }
 )
 export class VerifyTasksComponent implements OnInit {
@@ -22,7 +23,7 @@ export class VerifyTasksComponent implements OnInit {
   Data;
   array: string[];
   view: object;
-  restItemsUrl = 'https://08jy9v77aj.execute-api.ap-south-1.amazonaws.com/Dev/fetchallrecordedactivities';
+  restItemsUrl = environment.FetchAllRecoredActivitie;
   galleryView: FormControl;
   imagesurl = 'https://s3.ap-south-1.amazonaws.com/qshala-task-activity-images/';
   connection = false;

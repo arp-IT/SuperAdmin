@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { UserService } from '../user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { LocalStorage } from '@ngx-pwa/local-storage';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   restItems: any;
   username:  any;
   password: any;
-  restItemsUrl = 'https://dcdpu6mc4c.execute-api.ap-south-1.amazonaws.com/Dev/';
+  restItemsUrl = environment.AdminSignIn;
   mobileFormControl = new FormControl('', [
     Validators.required,
   ]);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router, ActivatedRoute, } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-first-page',
@@ -14,7 +15,7 @@ export class FirstPageComponent implements OnInit {
   flag2 = false;
   flag3 = false;
   restItems: any;
-  restItemsUrl = 'https://en25nerdu6.execute-api.ap-south-1.amazonaws.com/ViewPerformance-Dev/';
+  restItemsUrl = environment.ViewPerformanceUrl;
   mobileNO;
   connection = false;
   textValue = 'initial value';

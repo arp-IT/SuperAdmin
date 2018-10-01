@@ -3,7 +3,7 @@ import { UploadFileService } from '../upload-file.service';
 import { promise } from 'protractor';
 import { HttpClient } from '@angular/common/http';
 import { observable } from '../../../node_modules/rxjs';
-import { send } from '../../../node_modules/@types/q';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-second-page',
   templateUrl: './second-page.component.html',
@@ -26,9 +26,9 @@ export class SecondPageComponent implements OnInit {
   status = null;
   status1 = null;
   status2 = null;
-  coloring = "red";
-  coloring1 = "red";
-  coloring2 = "red";
+  coloring = 'red';
+  coloring1 = 'red';
+  coloring2 = 'red';
   public result: any;
   public output: any;
 
@@ -76,29 +76,31 @@ export class SecondPageComponent implements OnInit {
   }
 
   sendname() {
-    let promise = new Promise((res, err) => {
-      this.coloring = "#274c7c";
-      this.status = "Sending...";
-      const req = this.http.post('https://2sy3qrpxqi.execute-api.ap-south-1.amazonaws.com/Dev/uploadquestionandanswer', {
-        "bucketName": "qshala-excel-upload",
-        "fileName": this.fileName,
+    // tslint:disable-next-line:no-shadowed-variable
+    const promise = new Promise((res, err) => {
+      this.coloring = '#274c7c';
+      this.status = 'Sending...';
+      const req = this.http.post(environment.QuestionAnswer, {
+        'bucketName': 'qshala-excel-upload',
+        'fileName': this.fileName,
       })
         .subscribe(
+          // tslint:disable-next-line:no-shadowed-variable
           res => {
-            if (res == "All Done..!!") {
-              this.coloring = "green";
+            if (res === 'All Done..!!') {
+              this.coloring = 'green';
               this.Fileupload1();
-              this.status = "File Upload Successful"
-            }
-            else {
+              this.status = 'File Upload Successful';
+            } else {
               this.Fileupload1();
-              this.coloring = "red";
-              this.status = "Invalid format";
+              this.coloring = 'red';
+              this.status = 'Invalid format';
             }
           },
+          // tslint:disable-next-line:no-shadowed-variable
           err => {
-            this.coloring = "red";
-            this.status = "Uploading Failed";
+            this.coloring = 'red';
+            this.status = 'Uploading Failed';
           }
         );
     });
@@ -108,28 +110,30 @@ export class SecondPageComponent implements OnInit {
 
 
   sendname1() {
-    let promise = new Promise((res, err) => {
-      this.coloring1 = "#274c7c";
-      this.status1 = "Sending...";
-      const req = this.http.post('https://dus93oc6he.execute-api.ap-south-1.amazonaws.com/Dev/uploadreleaseexcel', {
-        "bucketName": "qshala-excel-upload",
-        "fileName": this.fileName1,
+    // tslint:disable-next-line:no-shadowed-variable
+    const promise = new Promise((res, err) => {
+      this.coloring1 = '#274c7c';
+      this.status1 = 'Sending...';
+      const req = this.http.post(environment.UploadReleaseExcel, {
+        'bucketName': 'qshala-excel-upload',
+        'fileName': this.fileName1,
       })
         .subscribe(
+          // tslint:disable-next-line:no-shadowed-variable
           res => {
-            if (res == "Release excel Upload...") {
-              this.coloring1 = "green";
-              this.status1 = "File Upload Successful"
-            }
-            else {
-              this.coloring1 = "red";
-              this.status1 = "Invalid format"
+            if (res === 'Release excel Upload...') {
+              this.coloring1 = 'green';
+              this.status1 = 'File Upload Successful';
+            } else {
+              this.coloring1 = 'red';
+              this.status1 = 'Invalid format';
             }
 
           },
+          // tslint:disable-next-line:no-shadowed-variable
           err => {
-            this.coloring1 = "red";
-            this.status1 = "Uploading Failed";
+            this.coloring1 = 'red';
+            this.status1 = 'Uploading Failed';
           }
         );
     });
@@ -138,21 +142,24 @@ export class SecondPageComponent implements OnInit {
   }
 
   sendname2() {
-    let promise = new Promise((res, err) => {
-      this.coloring2 = "#274c7c";
-      this.status2 = "Sending...";
-      const req = this.http.post('https://5ggfurv7z8.execute-api.ap-south-1.amazonaws.com/Dev/uploadactivityexcel', {
-        "bucketName": "qshala-excel-upload",
-        "fileName": this.fileName2,
+    // tslint:disable-next-line:no-shadowed-variable
+    const promise = new Promise((res, err) => {
+      this.coloring2 = '#274c7c';
+      this.status2 = 'Sending...';
+      const req = this.http.post(environment.UploadActivityExcel, {
+        'bucketName': 'qshala-excel-upload',
+        'fileName': this.fileName2,
       })
         .subscribe(
+          // tslint:disable-next-line:no-shadowed-variable
           res => {
-            this.coloring2 = "green";
-            this.status2 = "File Upload Successful"
+            this.coloring2 = 'green';
+            this.status2 = 'File Upload Successful';
           },
+          // tslint:disable-next-line:no-shadowed-variable
           err => {
-            this.coloring2 = "red";
-            this.status1 = "Uploading Failed";
+            this.coloring2 = 'red';
+            this.status1 = 'Uploading Failed';
           }
         );
     });
@@ -161,58 +168,55 @@ export class SecondPageComponent implements OnInit {
   }
 
   Fileupload() {
-    this.coloring = "#274c7c";
-    this.status = "Uploading...";
+    this.coloring = '#274c7c';
+    this.status = 'Uploading...';
     this.upload().then(post => {
       this.result = post;
       if (this.result.Location) {
-        this.coloring = "green";
-        this.status = "Uploaded"
+        this.coloring = 'green';
+        this.status = 'Uploaded';
         this.sendname();
-      }
-      else {
-        this.coloring = "red";
-        this.status = "Failed to upload";
+      } else {
+        this.coloring = 'red';
+        this.status = 'Failed to upload';
       }
     }
-    )
+    );
   }
 
 
 
   Fileupload1() {
-    this.coloring1 = "#274c7c";
-    this.status1 = "Uploading..."
+    this.coloring1 = '#274c7c';
+    this.status1 = 'Uploading...';
     this.upload1().then(post => {
       this.result = post;
       if (this.result.Location) {
-        this.coloring1 = "green";
-        this.status1 = "Uploaded"
+        this.coloring1 = 'green';
+        this.status1 = 'Uploaded';
         this.sendname1();
-      }
-      else {
-        this.coloring1 = "red";
-        this.status = "Failed to upload";
+      } else {
+        this.coloring1 = 'red';
+        this.status = 'Failed to upload';
       }
     }
-    )
+    );
   }
 
 
   Fileupload2() {
-    this.coloring2 = "#274c7c";
-    this.status2 = "Uploading..."
+    this.coloring2 = '#274c7c';
+    this.status2 = 'Uploading...';
     this.upload2().then(post => {
       this.result = post;
       if (this.result.Location) {
-        this.coloring2 = "green";
-        this.status2 = "Uploaded"
+        this.coloring2 = 'green';
+        this.status2 = 'Uploaded';
         this.sendname2();
-      }
-      else { this.coloring2 = "red"; this.status = "Failed to upload";  }
+      } else { this.coloring2 = 'red'; this.status = 'Failed to upload';  }
 
     }
-    )
+    );
 
   }
 

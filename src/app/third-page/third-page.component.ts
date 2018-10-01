@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-third-page',
@@ -10,7 +11,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class ThirdPageComponent implements OnInit {
   restItems = [];
-  restItemsUrl = 'https://v83k1hec93.execute-api.ap-south-1.amazonaws.com/Dev/fetchuserfeedback';
+  restItemsUrl = environment.FetchUserFeedBack;
   p = 1;
   position;
   today;

@@ -35,7 +35,7 @@ button[disabled]{
 
   .spinner {
     stroke: #f6b319;
-    padding-left: 45%;
+    padding-left: 50%;
   }
 
 .chip img {
@@ -115,7 +115,7 @@ button[disabled]{
 }
 .tasktitle {
   margin-left: 40%;
-  margin-top: 20px;
+  margin-top: 23px;
 }
 @media only screen and (min-height: 800px)
 {

@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from '../../node_modules/aws-sdk/clients/s3';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+// tslint:disable-next-line:quotemark
 import { HttpHeaders } from "@angular/common/http";
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class UploadFileService {
@@ -11,7 +12,7 @@ export class UploadFileService {
   message: string;
   filename: string;
 
-  FOLDER = 'https://s3.ap-south-1.amazonaws.com/qshala-excel-upload/';
+  FOLDER = environment.ExcehlHandler;
 
   constructor(private http: HttpClient) { }
 
@@ -34,11 +35,11 @@ export class UploadFileService {
 
     bucket.upload(params, function (err, data) {
       if (err) {
-        this.message = "There was an error uploading your file.";
+        this.message = 'There was an error uploading your file.';
         console.log(this.message, err);
         return false;
       }
-      this.message = "Successfully uploaded file."
+      this.message = 'Successfully uploaded file.';
       this.flag = true;
       this.filename = params.Key;
     });

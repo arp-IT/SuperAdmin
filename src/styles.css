@@ -4,6 +4,7 @@
 body {
      margin: 0;
      font-family:Arial;
+     /* background-image: url(../src/assets/laptop-desk.jpg); */
 }
 ::-webkit-scrollbar {
     display:auto;

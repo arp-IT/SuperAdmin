@@ -5,7 +5,7 @@
 <div *ngIf="default" class="default">There are no tasks to be reviewed at the moment</div>
 <div *ngIf="undefined !== restItems && !default">
   <br>
-  <div class="container" *ngFor="let item of restItems.allSubmittedTasks | paginate: { id: 'foo',itemsPerPage: 5, currentPage: p }">
+  <div class="container" *ngFor="let item of restItems.allSubmittedTasks | paginate: { id: 'foo',itemsPerPage: 6, currentPage: p }">
     <img *ngIf="item.profileUrl" alt="loading..." src={{item.profileUrl}} style="width:100%;" />
     <img *ngIf="!item.profileUrl" src="../../assets/icons/baseline-account_circle-24px.PNG">
     <button (click)="openview()" (click)="passId(item.taskID,item.userID)" class="buttons">View</button>

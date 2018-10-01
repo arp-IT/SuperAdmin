@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material';
 import { DataService } from '../data.service';
+import { environment } from '../../environments/environment';
 
 // tslint:disable-next-line:class-name
 class score {
@@ -17,7 +18,7 @@ class score {
 })
 
 export class GalleryComponent implements OnInit {
-  url = 'https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity';
+  url = environment.FetchRecordedActivity;
   restItems: any;
   sendItems: any;
   taskId;
@@ -109,7 +110,7 @@ export class GalleryComponent implements OnInit {
   }
   getdata() {
     return this.http.post(
-      'https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity',
+      this.url,
       {
         userID: this.userId,
         taskID: this.taskId
@@ -120,7 +121,7 @@ export class GalleryComponent implements OnInit {
   senddata() {
     this.status = 'Sending...';
     return this.http.post(
-      'https://g4e59shy99.execute-api.ap-south-1.amazonaws.com/Dev/usertaskassessment',
+      environment.UserTaskAssessment,
       {
         'userID': this.userId,
         'taskID': this.taskId,
