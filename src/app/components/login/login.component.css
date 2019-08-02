@@ -1,0 +1,22 @@
+.left-pannel {
+	float:left;
+	background-color: blueviolet;
+}
+.right-pannel {
+	background-color: lightgrey;
+}	
+
+.example-container {
+	display: flex;
+	flex-direction: column;
+  }
+  
+ .example-container > * {
+	width: 100%;
+ }
+
+.progress {
+	text-align: left;
+	margin-top: 100%;
+	background-color: black
+}

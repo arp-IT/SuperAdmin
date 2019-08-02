@@ -1,0 +1,28 @@
+<mat-toolbar color="primary"
+
+    <mat-toolbar-row>
+        <span></span>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        <span><pre> MetricStream</pre></span>
+        <span class="right-pannel"></span>
+        <button mat-button [matMenuTriggerFor]="belowMenu1"><mat-icon class="example-icon"  aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+<mat-menu #belowMenu1="matMenu" xPosition="before">
+  <button mat-menu-item (click)="AddOrganization()">Add Organization</button>
+</mat-menu>
+<button mat-button [matMenuTriggerFor]="belowMenu2"><mat-icon class="example-icon"  aria-hidden="false" aria-label="Example delete icon">edit</mat-icon></button>
+<mat-menu #belowMenu2="matMenu" yPosition="below">
+  <button mat-menu-item (click)="ViewOrganizationList()">View</button>
+  <button mat-menu-item>Edit</button>
+</mat-menu>
+<button mat-button [matMenuTriggerFor]="belowMenu3"> <mat-icon class="example-icon"  aria-hidden="false" aria-label="Example delete icon">delete</mat-icon></button>
+<mat-menu #belowMenu3="matMenu" yPosition="below">
+  <button mat-menu-item>Delete</button>
+</mat-menu>
+<button mat-button [matMenuTriggerFor]="belowMenu4"><mat-icon class="example-icon"  aria-hidden="false" aria-label="Example logout icon">logout</mat-icon></button>
+<mat-menu #belowMenu4="matMenu" yPosition="below">
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
+<!-- <img src="/assets/rupee_load.gif"/> -->

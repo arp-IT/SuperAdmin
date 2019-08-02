@@ -3,26 +3,30 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-production: false,
-ViewPerformanceUrl : 'https://en25nerdu6.execute-api.ap-south-1.amazonaws.com/ViewPerformance-Dev/',
+  production: false,
 
-AdminSignIn :   'https://dcdpu6mc4c.execute-api.ap-south-1.amazonaws.com/Dev/',
+  ViewPerformanceUrl:
+    'https://en25nerdu6.execute-api.ap-south-1.amazonaws.com/ViewPerformance-Dev/',
 
-ExcehlHandler :  'https://s3.ap-south-1.amazonaws.com/qshala-excel-upload/',
+  AdminSignIn: 'http://localhost:8080/ShopManagement/MasterOrganizationLogin',
 
-QuestionAnswer : 'https://2sy3qrpxqi.execute-api.ap-south-1.amazonaws.com/Dev/uploadquestionandanswer',
+  CreateOrg: 'http://localhost:8080/ShopManagement/create/organizations',
 
-FetchAllRecoredActivitie : 'https://08jy9v77aj.execute-api.ap-south-1.amazonaws.com/Dev/fetchallrecordedactivities',
+  ExcehlHandler: 'https://s3.ap-south-1.amazonaws.com/qshala-excel-upload/',
 
-FetchRecordedActivity : 'https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity',
+  QuestionAnswer: 'https://2sy3qrpxqi.execute-api.ap-south-1.amazonaws.com/Dev/uploadquestionandanswer',
 
-FetchUserFeedBack :   'https://v83k1hec93.execute-api.ap-south-1.amazonaws.com/Dev/fetchuserfeedback',
+  FetchAllRecoredActivitie: 'https://08jy9v77aj.execute-api.ap-south-1.amazonaws.com/Dev/fetchallrecordedactivities',
 
-UploadActivityExcel : 'https://5ggfurv7z8.execute-api.ap-south-1.amazonaws.com/Dev/uploadactivityexcel',
+  FetchRecordedActivity: 'https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity',
 
-UploadReleaseExcel : 'https://dus93oc6he.execute-api.ap-south-1.amazonaws.com/Dev/uploadreleaseexcel',
+  FetchUserFeedBack: 'https://v83k1hec93.execute-api.ap-south-1.amazonaws.com/Dev/fetchuserfeedback',
 
-UserTaskAssessment :  'https://g4e59shy99.execute-api.ap-south-1.amazonaws.com/Dev/usertaskassessment',
+  UploadActivityExcel: 'https://5ggfurv7z8.execute-api.ap-south-1.amazonaws.com/Dev/uploadactivityexcel',
+
+  UploadReleaseExcel: 'https://dus93oc6he.execute-api.ap-south-1.amazonaws.com/Dev/uploadreleaseexcel',
+
+  UserTaskAssessment: 'https://g4e59shy99.execute-api.ap-south-1.amazonaws.com/Dev/usertaskassessment'
 };
 /*
  * In development mode, to ignore zone related error stack frames such as

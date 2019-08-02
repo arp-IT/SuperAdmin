@@ -1,0 +1,28 @@
+<mat-progress-bar mode="indeterminate"  *ngIf="login"></mat-progress-bar>
+<mat-grid-list cols="2" rowHeight="1:1">
+	<mat-grid-tile class="left-pannel">
+		<img src='../../assets/advance-setting-icon.png' class="left-pannel-image">
+	</mat-grid-tile>
+
+
+<mat-grid-tile class="right-pannel">
+		<mat-card>
+		   <img src="../../assets/admin_logo_by_lucifercho-d39lpuk.png" alt="success" />
+			<form (submit)="loginUser($event)">
+				<div class="example-container">
+					<mat-form-field>
+					  <input autocomplete="off" matInput placeholder="Username" [formControl]="mobileFormControl" required>
+					</mat-form-field>
+				  
+					<mat-form-field >
+					  <input autocomplete="off" type="password" matInput placeholder="Password" [formControl]="mobileFormControl" required>
+					</mat-form-field>
+					<button type="submit" mat-flat-button >Login</button>
+				</div> 
+			</form>
+			<div style="text-align: center; color: red;" *ngIf="!flag">
+					<h3>Invalid credentials!</h3>
+				</div>
+		</mat-card>
+	</mat-grid-tile>
+</mat-grid-list>
