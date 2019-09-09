@@ -100,6 +100,7 @@ export class UpdateOrganizationComponent implements OnInit {
           console.log(this.restItems.response)
           this.getdetails=this.restItems.organization;
           // this.orgName.setValue(this.getdetails.orgName);
+          // this.orgName.setValue(this.getdetails.orgName);
           // this.orgName.updateValueAndValidity();
         } else {
       console.log(this.restItems.response + "Errors" );
