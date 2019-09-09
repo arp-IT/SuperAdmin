@@ -27,7 +27,7 @@ restItemsServiceGetRestItems(myform : FormGroup) {
             "orgTelephoneno": myform.get('orgTelephoneno').value,
             "orgDtls": myform.get('orgDtls').value,
             "orgUserName": myform.get('orgUserName').value,
-            "orgPwd": myform.get('orgOwner').value
+            "orgPwd": myform.get('orgPwd').value
         }
       )
       .pipe(map(data => data));

@@ -19,39 +19,43 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Mobile Number" formControlName="orgContactno">
-        <mat-error  *ngIf="orgContactno.errors?.required">Mobile Number is <strong>required</strong></mat-error>
+        <mat-error *ngIf="orgContactno.errors?.required">Mobile Number is <strong>required</strong></mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Telephone Number" formControlName="orgTelephoneno">
       </mat-form-field>
       <mat-form-field>
-          <mat-select placeholder="Business Type" formControlName="orgDtls">
-            <mat-option *ngFor="let type of organizationType"  [value]="type">{{type}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="orgDtls.errors?.required">Business Type<strong>required</strong></mat-error>
+        <mat-select placeholder="Business Type" formControlName="orgDtls">
+          <mat-option *ngFor="let type of organizationType" [value]="type">{{type}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="orgDtls.errors?.required">Business Type<strong>required</strong></mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="GSTIN" formControlName="orgUserName">
         <mat-error *ngIf="orgUserName.errors?.required">GSTIN is <strong>required</strong></mat-error>
-        <mat-error *ngIf="orgUserName.errors?.userName1">GSTIN allready registered</mat-error>
       </mat-form-field>
       <mat-form-field>
         <!-- <input matInput placeholder="Set password" type = "password" formControlName="password"> -->
-        <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
+        <input matInput placeholder="Enter your password" formControlName="password"
+          [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
         <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
         <mat-error *ngIf="password.errors?.minlength">
-            Password must be {{password.errors.minlength.requiredLength}} characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters
+          Password must be {{password.errors.minlength.requiredLength}} characters long, we need another
+          {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters
         </mat-error>
       </mat-form-field>
       <mat-form-field>
         <!-- <input  matInput placeholder="Re-Enter password" type = "password" formControlName="rePassword"> -->
-        <input matInput placeholder="Confirm your password" formControlName="orgPwd" [type]="hide1 ? 'password' : 'text'">
-    <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
-    <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
+        <input matInput placeholder="Confirm your password" formControlName="orgPwd"
+          [type]="hide1 ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide1">
+          <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
         <mat-error *ngIf="orgPwd.errors?.required">Password is required</mat-error>
         <!-- <mat-error *ngIf="passwords.errors?.passwordMatch">not match</mat-error> -->
       </mat-form-field>

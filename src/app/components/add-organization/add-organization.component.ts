@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateOrgService } from 'src/app/Services/create-org.service';
 import { Router } from '@angular/router';
+import { ValidateUsernameService } from 'src/app/Services/validate-username.service'
 
 // function passwordValidator() { // wrapper fn
 //   return (ctrl: AbstractControl) => { // return the function w abstractControl
@@ -36,12 +37,28 @@ import { Router } from '@angular/router';
 //         passwordMatch: passwordCtrl.value //redunant
 //       }
 //     }
-    
+
 //     return null;
 //   }
 // }
 
-
+function userNameValidator(control: FormControl, userNameList : any) {
+  let username = control.value;
+  let userNameLists = userNameList;
+  let flag = false;
+  for(var i = 0 ; i < userNameLists.length ; i++) {
+    if(userNameLists[i] === username) {
+      return {
+        userName1 : {
+          parseduserName : username
+        }
+      }
+    }
+    return null;
+  }
+}
+  
+  
 @Component({
   selector: 'app-add-organization',
   templateUrl: './add-organization.component.html',
@@ -63,20 +80,21 @@ export class AddOrganizationComponent implements OnInit {
   orgPwd: FormControl;
   orgTelephoneno: FormControl;
   orgUserName: FormControl;
-  matchFlag:boolean=true;
-  restItems : any;
+  matchFlag: boolean = true;
+  restItems: any;
+  usernameList:any;
 
 
   passwordValidator(fb: FormGroup) {
-    let password  = fb.controls.password.value;
-    let repass = fb.controls.orgPwd.value; 
-      if (repass !== password) {
-        return {
-          passwordMatch: {
-            passwordMatch: password
-          }
+    let password = fb.controls.password.value;
+    let repass = fb.controls.orgPwd.value;
+    if (repass !== password) {
+      return {
+        passwordMatch: {
+          passwordMatch: password
         }
       }
+    }
     return null;
   }
 
@@ -114,12 +132,13 @@ export class AddOrganizationComponent implements OnInit {
     });
   }
 
-  constructor(private  createOrg : CreateOrgService, private router: Router ) { }
+  constructor(private createOrg: CreateOrgService, private router: Router , private getUsername: ValidateUsernameService) { }
 
   ngOnInit() {
-    this.matchFlag= true;
+    this.matchFlag = true;
     this.createFormControls();
     this.createForm();
+    this.getUserNames();
   }
 
   onSubmit() {
@@ -127,17 +146,34 @@ export class AddOrganizationComponent implements OnInit {
       console.log("Form Submitted!");
       console.log(this.myform.value);
       this.createOrg.restItemsServiceGetRestItems(this.myform)
+        .subscribe(
+          restItems => {
+            this.restItems = restItems;
+            console.log(this.restItems.response);
+            if (this.restItems.response === 'Success') {
+              console.log(this.restItems.response)
+              this.router.navigate(['dashboard/ViewOrganizationList']);
+              this.myform.reset();
+            } else {
+              console.log(this.restItems.response + "Errors");
+              alert('Form Submission Failed');
+            }
+          },
+          error => {
+            if (error.status === 0) {
+              alert('check your Internet connection');
+            }
+          }
+        );
+    }
+  }
+
+  getUserNames() {
+    this.getUsername.restItemsServiceGetRestItems()
       .subscribe(
         restItems => {
-          this.restItems = restItems;
-          console.log(this.restItems.response);
-          if (this.restItems.response === 'Success') {
-            console.log(this.restItems.response)
-            this.router.navigate(['dashboard/ViewOrganizationList']);
-          } else {
-        console.log(this.restItems.response + "Errors" );
-        alert('Form Submission Failed');
-          }
+          this.usernameList = restItems;
+          console.log(this.usernameList);
         },
         error => {
           if (error.status === 0) { 
@@ -145,9 +181,21 @@ export class AddOrganizationComponent implements OnInit {
           }
         }
       );
-      this.myform.reset();
+  }
+  userNameValidator(control: FormControl) {
+    let username = control.value;
+    console.log(this.usernameList);
+    let flag = false;
+    for(var i = 0 ; i < this.usernameList.length ; i++) {
+      if(this.usernameList.get(i) === username) {
+        return {
+          userName : {
+            parseduserName : username
+          }
+        }
+      }
+      return null;
     }
   }
-
 
 }

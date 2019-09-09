@@ -1,36 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule,MatButtonModule,MatSidenavModule,MatIconModule,MatListModule,MatCardModule} from '@angular/material';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { FirstPageComponent } from './components/first-page/first-page.component';
-import { UploadFileService } from './Services/upload-file.service';
-import { DataTableModule } from 'angular-6-datatable';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule,MatSelectModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule, MatToolbarModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
-import { LoginComponent } from './components/login/login.component';
-import { AuthguardGuard } from '../app/guards/authguard.guard';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { DataService } from '../app/Services/data.service';
-import { ImageViewerModule } from 'ngx-image-viewer';
-import { InfiniteScrollModule } from '@thisissoon/angular-infinite-scroll';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AngularWebStorageModule } from 'angular-web-storage';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
+import { InfiniteScrollModule } from '@thisissoon/angular-infinite-scroll';
+import { DataTableModule } from 'angular-6-datatable';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import {MatMenuModule} from '@angular/material/menu';
+import { AngularWebStorageModule } from 'angular-web-storage';
+import { ImageViewerModule } from 'ngx-image-viewer';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AuthguardGuard } from '../app/guards/authguard.guard';
+import { DataService } from '../app/Services/data.service';
+import { AppComponent } from './app.component';
 import { AddOrganizationComponent } from './components/add-organization/add-organization.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FirstPageComponent } from './components/first-page/first-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { UpdateOrganizationComponent } from './components/update-organization/update-organization.component';
 import { ViewOrganizationListComponent } from './components/view-organization-list/view-organization-list.component';
+import { UploadFileService } from './Services/upload-file.service';
+
+
 
 const appRoutes: Routes = [
   {
@@ -66,6 +66,11 @@ const appRoutes: Routes = [
         path: 'performance',
         canActivate: [AuthguardGuard],
         component: FirstPageComponent
+      },
+      {
+        path: 'UpdateOrganization',
+        canActivate: [AuthguardGuard],
+        component: UpdateOrganizationComponent
       }
     ]
   },
@@ -83,7 +88,8 @@ const appRoutes: Routes = [
     LoginComponent,
     DashboardComponent,
     AddOrganizationComponent,
-    ViewOrganizationListComponent
+    ViewOrganizationListComponent,
+    UpdateOrganizationComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +122,10 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatProgressBarModule,
     MatMenuModule,
-    MatSelectModule
+    MatSortModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   entryComponents: [DashboardComponent],
   providers: [
@@ -126,4 +135,4 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

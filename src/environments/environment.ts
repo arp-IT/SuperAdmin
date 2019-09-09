@@ -5,12 +5,17 @@
 export const environment = {
   production: false,
 
-  ViewPerformanceUrl:
-    'https://en25nerdu6.execute-api.ap-south-1.amazonaws.com/ViewPerformance-Dev/',
+  ViewPerformanceUrl: 'https://en25nerdu6.execute-api.ap-south-1.amazonaws.com/ViewPerformance-Dev/',
 
   AdminSignIn: 'http://localhost:8080/ShopManagement/MasterOrganizationLogin',
 
   CreateOrg: 'http://localhost:8080/ShopManagement/create/organizations',
+  
+  OrgList: 'http://localhost:8080/ShopManagement/organizations',
+
+  UserNameList : 'http://localhost:8080/ShopManagement/orgUserNames',
+
+  OrgDetails: 'http://localhost:8080/ShopManagement/organizationUpdate',
 
   ExcehlHandler: 'https://s3.ap-south-1.amazonaws.com/qshala-excel-upload/',
 
