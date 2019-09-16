@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateOrgService } from 'src/app/Services/create-org.service';
 import { GetOrganizationDetailsService } from 'src/app/Services/get-organization-details.service';
+import {UpdateOrganizationService} from '../../Services/update-organization.service'
 
 @Component({
   selector: 'app-update-organization',
@@ -32,23 +33,25 @@ export class UpdateOrganizationComponent implements OnInit {
   selectedId: any;
 
   createFormControls() {
-    this.orgName = new FormControl("", Validators.required);
-    this.orgOwner = new FormControl("", Validators.required);
-    this.orgAddress = new FormControl("", Validators.required);
-    this.orgPinCode = new FormControl("", Validators.required);
-    this.orgContactno = new FormControl("", Validators.required);
+    this.route.queryParams.subscribe(queryParams => {
+      this.selectedId = queryParams; 
+      console.log(this.selectedId);
+    });
+    this.orgName = new FormControl(this.selectedId.orgName, Validators.required);
+    this.orgOwner = new FormControl(this.selectedId.orgOwner, Validators.required);
+    this.orgAddress = new FormControl(this.selectedId.orgAddress, Validators.required);
+    this.orgPinCode = new FormControl(this.selectedId.orgPinCode, Validators.required);
+    this.orgContactno = new FormControl(this.selectedId.orgContactno, Validators.required);
     this.orgTelephoneno = new FormControl();
-    this.orgDtls = new FormControl("", Validators.required);
-    this.orgUserName = new FormControl("", [Validators.required]);
+    this.orgDtls = new FormControl(this.selectedId.orgDtls, Validators.required);
+    this.orgUserName = new FormControl(this.selectedId.orgUserName, [Validators.required]);
     this.passwords = new FormGroup({
-      password: this.password = new FormControl("", [Validators.required, Validators.minLength(8)]),
-      orgPwd: this.orgPwd = new FormControl("", [Validators.required])
+      password: this.password = new FormControl(this.selectedId.orgPwd, [Validators.required, Validators.minLength(8)]),
+      orgPwd: this.orgPwd = new FormControl(this.selectedId.orgPwd, [Validators.required])
     }
     )
   }
-  dataload() {
-    this.orgName.setValue(this.getdetails.orgName);
-  }
+  
 
   createForm() {
     this.myform = new FormGroup({
@@ -67,17 +70,12 @@ export class UpdateOrganizationComponent implements OnInit {
 
   onSubmit() {
     if (this.myform.valid) {
-      this.CreateOrg.restItemsServiceGetRestItems(this.myform)
+      this.update.restItemsServiceGetRestItems(this.myform)
       .subscribe(
         restItems => {
           this.restItems = restItems;
-          if (this.restItems.response === 'Success') {
-            console.log(this.restItems.response)
-            this.router.navigate(['dashboard/ViewOrganizationList']);
-            this.myform.reset();
-          } else {
-        alert('Form Submission Failed');
-          }
+          this.router.navigate(['dashboard/ViewOrganizationList']);
+          this.myform.reset();
         },
         error => {
           if (error.status === 0) { 
@@ -88,35 +86,33 @@ export class UpdateOrganizationComponent implements OnInit {
     }
   }
 
-  onLoad() {
-    this.route.queryParams.subscribe(queryParams => {
-    this.selectedId = queryParams['term']; 
-    this.GetOrg.restItemsServiceGetRestItems(this.selectedId)
-    .subscribe(
-      restItems => {
-        this.restItems = restItems;
-        console.log(this.restItems.response);
-        if (this.restItems.response === 'Success') {
-          console.log(this.restItems.response)
-          this.getdetails=this.restItems.organization;
-          // this.orgName.setValue(this.getdetails.orgName);
-          // this.orgName.setValue(this.getdetails.orgName);
-          // this.orgName.updateValueAndValidity();
-        } else {
-      console.log(this.restItems.response + "Errors" );
-      alert('Enable to Load Data');
-        }
-      },
-      error => {
-        if (error.status === 0) { 
-          alert('check your Internet connection');
-        }
-      }
-    );
-  });
-  }
+  // onLoad() {
+  //   this.route.queryParams.subscribe(queryParams => {
+  //   this.selectedId = queryParams['term']; 
+  //   console.log(this.selectedId.value);
+  //   this.GetOrg.restItemsServiceGetRestItems(this.selectedId)
+  //   .subscribe(
+  //     restItems => {
+  //       this.restItems = restItems;
+  //       console.log(this.restItems.response);
+  //       if (this.restItems.response === 'Success') {
+  //         console.log(this.restItems.response)
+  //         this.getdetails=this.restItems.organization;
+  //       } else {
+  //     console.log(this.restItems.response + "Errors" );
+  //     alert('Enable to Load Data');
+  //       }
+  //     },
+  //     error => {
+  //       if (error.status === 0) { 
+  //         alert('check your Internet connection');
+  //       }
+  //     }
+  //   );
+  // });
+  // }
 
-  constructor(private  GetOrg : GetOrganizationDetailsService, private CreateOrg: CreateOrgService, private router: Router, private route : ActivatedRoute ) { }
+  constructor(private  GetOrg : GetOrganizationDetailsService, private CreateOrg: CreateOrgService, private router: Router, private route : ActivatedRoute, private update: UpdateOrganizationService ) { }
 
   ngOnInit() {
     this.createFormControls();

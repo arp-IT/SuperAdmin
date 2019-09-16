@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
 
-  ViewPerformanceUrl: 'https://en25nerdu6.execute-api.ap-south-1.amazonaws.com/ViewPerformance-Dev/',
 
   AdminSignIn: 'http://localhost:8080/ShopManagement/MasterOrganizationLogin',
 
@@ -17,21 +16,7 @@ export const environment = {
 
   OrgDetails: 'http://localhost:8080/ShopManagement/organizationUpdate',
 
-  ExcehlHandler: 'https://s3.ap-south-1.amazonaws.com/qshala-excel-upload/',
-
-  QuestionAnswer: 'https://2sy3qrpxqi.execute-api.ap-south-1.amazonaws.com/Dev/uploadquestionandanswer',
-
-  FetchAllRecoredActivitie: 'https://08jy9v77aj.execute-api.ap-south-1.amazonaws.com/Dev/fetchallrecordedactivities',
-
-  FetchRecordedActivity: 'https://4sp2q7m0sl.execute-api.ap-south-1.amazonaws.com/Dev/fetchrecordedactivity',
-
-  FetchUserFeedBack: 'https://v83k1hec93.execute-api.ap-south-1.amazonaws.com/Dev/fetchuserfeedback',
-
-  UploadActivityExcel: 'https://5ggfurv7z8.execute-api.ap-south-1.amazonaws.com/Dev/uploadactivityexcel',
-
-  UploadReleaseExcel: 'https://dus93oc6he.execute-api.ap-south-1.amazonaws.com/Dev/uploadreleaseexcel',
-
-  UserTaskAssessment: 'https://g4e59shy99.execute-api.ap-south-1.amazonaws.com/Dev/usertaskassessment'
+  updateOrganization : 'http://localhost:8080/ShopManagement/updateOrganization',
 };
 /*
  * In development mode, to ignore zone related error stack frames such as
