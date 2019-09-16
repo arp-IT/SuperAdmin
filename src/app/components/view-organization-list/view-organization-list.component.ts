@@ -43,10 +43,23 @@ export class ViewOrganizationListComponent implements OnInit {
       );
   }
 
-  onEdit(id:string) {
+  onEdit(id:any) {
+    console.log(id.orgUserName);
     this.router.navigate(['../UpdateOrganization'], <NavigationExtras>{
       queryParams: <Params>{
-        term: id
+        orgAddress: id.orgAddress,
+        orgContactno: id.orgContactno,
+        orgCustInfoReq: id.orgCustInfoReq,
+        orgDtls: id.orgDtls,
+        orgId: id.orgId,
+        orgIsactive: id.orgIsactive,
+        orgLogo: id.orgLogo,
+        orgName: id.orgName,
+        orgOwner: id.orgOwner,
+        orgPinCode: id.orgPinCode,
+        orgPwd: id.orgPwd,
+        orgTelephoneno: id.orgTelephoneno,
+        orgUserName: id.orgUserName
       },
       relativeTo: this.route
     });

@@ -5,7 +5,6 @@ import { LocalStorageService, SessionStorageService, LocalStorage, SessionStorag
   providedIn: 'root'
 })
 export class UserService {
-  // tslint:disable-next-line:no-inferrable-types
   public isUserLoggedIn = null;
 
 
